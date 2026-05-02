@@ -1254,6 +1254,11 @@ p.lead {
 
 /* NAVBAR
 ----------------------*/
+@media (min-width: 992px) {
+    #masthead .navbar-collapse {
+        flex-grow: 0;
+    }
+}
 
 .nav-menu {
     padding: 1rem 0;
