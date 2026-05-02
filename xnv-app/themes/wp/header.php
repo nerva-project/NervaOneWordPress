@@ -139,7 +139,7 @@
 					'theme_location'    => 'primary',
 					'container'       => 'div',
 					'container_id'    => 'main-nav',
-					'container_class' => 'collapse navbar-collapse justify-content-end',
+					'container_class' => 'collapse navbar-collapse justify-content-start',
 					'menu_id'         => false,
 					'menu_class'      => 'navbar-nav',
 					'depth'           => 3,
