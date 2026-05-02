@@ -991,8 +991,8 @@ body:not(.theme-preset-active) footer#colophon {
 
 @media screen and (max-width: 767px) {
   #masthead .navbar-nav > li > a {
-    padding-bottom: 0.938rem;
-    padding-top: 0.938rem;
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
   }
 }
 /*--------------------------------------------------------------

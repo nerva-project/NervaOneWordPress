@@ -79,6 +79,9 @@
 							<img src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 						</a>
 					</div>
+					<button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+						<i id="dark-mode-icon" class="fas fa-moon"></i>
+					</button>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -148,9 +151,6 @@
 					));
 					?>
 
-					<button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
-						<i id="dark-mode-icon" class="fas fa-moon"></i>
-					</button>
 
 				</nav>
 			</div>
