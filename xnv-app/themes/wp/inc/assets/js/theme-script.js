@@ -97,6 +97,38 @@ jQuery( function ( $ ) {
         menuscroll();
     });
     /*-----------------------------------
+     * ACTIVE NAV ON SCROLL (one-page)
+     *-----------------------------------*/
+    var sectionIds = ['home', 'features', 'roadmap', 'exchanges', 'downloads', 'mining', 'blog'];
+    var $allNavLinks = $('#menu-top-menu .nav-link, #menu-top-menu .dropdown-item');
+
+    function updateActiveNav() {
+        var headerH = $('#masthead').outerHeight() || 80;
+        var scrollTop = $(window).scrollTop() + headerH + 20;
+        var activeId = null;
+
+        sectionIds.forEach(function(id) {
+            var $section = $('#' + id);
+            if ($section.length && $section.offset().top <= scrollTop) {
+                activeId = id;
+            }
+        });
+
+        $allNavLinks.removeClass('active');
+        if (!activeId) { return; }
+
+        var $match = $allNavLinks.filter(function() {
+            var href = $(this).attr('href') || '';
+            return href === '#' + activeId || href.indexOf('/#' + activeId) !== -1;
+        });
+        $match.addClass('active');
+        $match.closest('.dropdown').find('> .nav-link.dropdown-toggle').addClass('active');
+    }
+
+    updateActiveNav();
+    $(window).on('scroll', updateActiveNav);
+
+    /*-----------------------------------
      * NAVBAR CLOSE ON CLICK
      *-----------------------------------*/
 

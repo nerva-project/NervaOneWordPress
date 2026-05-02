@@ -90,7 +90,7 @@
 					<div id="main-nav" class="collapse navbar-collapse justify-content-start">
 						<ul id="menu-top-menu" class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link active" href="<?php if ( is_front_page() && is_home() ) { echo '#home'; } else { echo esc_url( home_url( '/#home' )); } ?>">HOME <span class="sr-only">(current)</span></a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#home'; } else { echo esc_url( home_url( '/#home' )); } ?>">HOME</a>
 							</li>							
 							<li class="menu-item nav-item">
 								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#features'; } else { echo esc_url( home_url( '/#features' )); } ?>">FEATURES</a>

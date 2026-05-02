@@ -1659,12 +1659,12 @@ header {
 .card.pricing .list-group-item {
     border: 0;
     text-align: center;
-    color: #959094;
+    color: var(--clr-text);
     padding: 1.05rem 1.25rem;
 }
 
 .card.pricing .list-group-item del {
-    color: #d9d3d8;
+    color: var(--clr-text-muted);
 }
 
 .card.pricing .card-body {
@@ -1970,7 +1970,7 @@ header {
   position: relative;
 }
 .timeline-title {
-	color: #633991;
+	color: var(--clr-heading);
 	font-weight: 400;
   }
 .timeline-item:last-child {
@@ -1979,7 +1979,7 @@ header {
 
 /*----- TIMELINE INFO -----*/
 .timeline-info {
-  color: #633991;
+  color: var(--clr-heading);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 3px;
@@ -2508,16 +2508,13 @@ header {
 :root.dark-mode .ui-steps li:not(:last-child) {
     border-bottom-color: var(--clr-border-subtle);
 }
-
-/* Soften text on gradient backgrounds in dark mode */
-:root.dark-mode .white-text,
+/* Soften hero text on gradient background in dark mode */
 :root.dark-mode .page-intro {
-    color: rgba(255, 255, 255, 0.80) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
 }
-:root.dark-mode .bg-gradient td,
-:root.dark-mode .bg-gradient th,
-:root.dark-mode .bg-gradient strong {
-    color: rgba(255, 255, 255, 0.80) !important;
+/* Stats table (.white-text) matches body text in dark mode */
+:root.dark-mode .white-text {
+    color: var(--clr-text) !important;
 }
 
 /* Darken the brand gradient for dark mode */
