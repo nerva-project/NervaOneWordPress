@@ -2426,6 +2426,13 @@ header {
 /*--------------------------------------------------------------
 # Dark Mode Toggle Button
 --------------------------------------------------------------*/
+@media (min-width: 1200px) {
+    #dark-mode-toggle { order: 10; }
+    #masthead .navbar-collapse { order: 5; }
+}
+@media (max-width: 1199px) {
+    #dark-mode-toggle { margin-left: auto; }
+}
 .dark-mode-btn {
     background: none;
     border: none;
