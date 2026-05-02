@@ -93,9 +93,6 @@
 								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#features'; } else { echo esc_url( home_url( '/#features' )); } ?>">FEATURES</a>
 							</li>
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#our-mission'; } else { echo esc_url( home_url( '/#our-mission' )); } ?>">MISSION</a>
-							</li>
-							<li class="menu-item nav-item">
 								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#roadmap'; } else { echo esc_url( home_url( '/#roadmap' )); } ?>">ROADMAP</a>
 							</li>                                
 							<li class="menu-item nav-item">
@@ -107,13 +104,12 @@
 							<li class="menu-item nav-item">
 								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#mining'; } else { echo esc_url( home_url( '/#mining' )); } ?>">MINE</a>
 							</li>                                         
-							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#blog'; } else { echo esc_url( home_url( '/#blog' )); } ?>">BLOG</a>
-							</li>
-							
 							<li class="menu-item menu-item-has-children dropdown nav-item">
 							<a href="#moredd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link">RESOURCES</a>
 								<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-31269" role="menu">
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="<?php echo is_front_page() && is_home() ? '#blog' : esc_url( home_url( '/#blog' ) ); ?>">BLOG</a>
+									</li>
 									<li class="menu-item nav-item">
 										<?php // No if else for href needed because of absolute urls ?>
 										<a class="dropdown-item" href="https://docs.nerva.one" target="_blank">WIKI</a>
