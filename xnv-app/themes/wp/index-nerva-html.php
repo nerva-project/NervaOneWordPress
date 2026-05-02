@@ -13,53 +13,60 @@
                     <div>
                         <div class="spacer hidden-xs"></div>
                         <h1 class="page-intro">
-                            NERVA (XNV) is a private and secure cryptocurrency that you can mine on your computer's CPU.
-							It's GPU and ASIC resistant and tries to stay true to 1 CPU = 1 VOTE vision
+                            <b>NERVA (XNV)</b> is a privacy focused cryptocurrency built for secure transactions, private balances, and true financial fungibility.
+							Using proven Cryptonote privacy technology, NERVA obscures sender, receiver, and transaction amounts on chain.
+							This allows users to transact without exposing their financial history to the public.
                         </h1>
 						
                         <h1 class="page-intro">
-							NERVA offers true privacy and fungibility, is totally untraceable and
-                            unlinkable, with users and transfer amounts hidden from the public
+							NERVA is designed for long term decentralization through CPU only Proof of Work mining.
+							Its <b>Cryptonight Adaptive</b> algorithm helps resist ASIC and GPU dominated mining, keeping network participation accessible to everyday users.
                         </h1>
 						<br>
 						
 						<table class="mb-4 white-text">
 							<tr>
-								<td style="text-align:right">Cryptocurrency:</td>
+								<td style="text-align:right"><b>Cryptocurrency:</b></td>
 								<td>&nbsp;&nbsp;&nbsp;</td>
-								<td style="text-align:left">Nerva (XNV)</td>
+								<td style="text-align:left">NERVA (XNV)</td>
 							</tr>
 							<tr>
-								<td style="text-align:right">Circulating Supply:</td>
+								<td style="text-align:right"><b>Circulating Supply:</b></td>
 								<td></td>
-								<td style="text-align:left">18.84 million XNV (as of Feb 2024)</td>
+								<td style="text-align:left"><span id="xnv-supply">Loading...</span> XNV</td>
 							</tr>
 							<tr>
-								<td style="text-align:right">Annual Inflation:</td>
+								<td style="text-align:right"><b>Annual Inflation:</b></td>
 								<td></td>
-								<td style="text-align:left">157800 XNV (0.84%)</td>
+								<td style="text-align:left">157800 XNV (0.831%)</td>
 							</tr>
 							<tr>
-								<td style="text-align:right">Hash Algorithm:</td>
+								<td style="text-align:right"><b>Consensus:</b></td>
 								<td></td>
-								<td style="text-align:left">Cryptonight-Adaptive (Proof-Of-Work)</td>
+								<td style="text-align:left">Proof of Work (CPU Mining)</td>
 							</tr>
 							<tr>
-								<td style="text-align:right">Block Reward:</td>
+								<td style="text-align:right"><b>Hash Algorithm:</b></td>
 								<td></td>
-								<td style="text-align:left">0.3 XNV</td>
+								<td style="text-align:left"><a href="https://docs.nerva.one/about/#cryptonight-adaptive">Cryptonight Adaptive</a></td>								
 							</tr>
 							<tr>
-								<td style="text-align:right">Emission Speed:</td>
+								<td style="text-align:right"><b>Block Time:</b></td>
 								<td></td>
 								<td style="text-align:left">60 seconds</td>
 							</tr>
 							<tr>
-								<td style="text-align:right">Premine:</td>
+								<td style="text-align:right"><b>Block Reward:</b></td>
 								<td></td>
-								<td style="text-align:left">180000 XNV (1%)</td>
+								<td style="text-align:left">0.3 XNV</td>
 							</tr>
-						</table>
+
+							<tr>
+								<td style="text-align:right"><b>Premine:</b></td>
+								<td></td>
+								<td style="text-align:left">180000 XNV (<a href="https://nerva.one/donate/#treasury-holdings">Treasury Holdings</a>)</td>								
+							</tr>
+						</table>				
 						
                     </div>
                 </div>
@@ -157,7 +164,7 @@
                                 <span class="fa fa-lock fa-3x gradient-fill mr-3"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Secure</h3>
-                                    <p class="card-text">Based on the Monero, NERVA combines cryptonote's
+                                    <p class="card-text">Based on Monero, NERVA combines cryptonote's
                                         privacy and fungibility with an emphasis towards decentralization.
                                         Transactions remain anonymous and keep their histories hidden.
                                     </p>
@@ -414,11 +421,136 @@
 				
 				<div class="col-md-8 d-flex align-items-center">
 					<ul class="timeline timeline-split">
+						
+						<li class="timeline-item period">
+							<div class="timeline-info"></div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h3 class="timeline-title">The Future</h3>
+							</div>
+						</li>
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Future</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Community Driven</h4>
+								<p>Nerva is an open-source project with no company, no roadmap handed down from above. What gets built next depends on what the community wants to build. If you have ideas, skills, or just the will to contribute — this project is yours to shape. The future of Nerva is unwritten, and that is intentional.</p>
+							</div>
+						</li>	
+						
+												
+						<li class="timeline-item period">
+							<div class="timeline-info"></div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h3 class="timeline-title">2026</h3>
+							</div>
+						</li>
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q3 / 2026</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Hard Fork 13</h4>
+								<p>Network upgrade including a redesigned mining algorithm with stronger GPU and ASIC resistance, keeping Nerva CPU-only and pool-resistant, as it has always been. Also included: daemon sync and wallet scan improvements for faster node setup and better wallet restore experience.</p>
+							</div>
+						</li>	
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q2 / 2026</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Software Development</h4>
+								<p>Enhance Core Software and Services</p>
+								<p>Research and evaluate core software updates aligned with Nerva's long term goals. Begin development on new releases and continue improving existing Nerva services and infrastructure.</p>
+							</div>
+						</li>					
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q1 / 2026</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Community Growth</h4>
+								<p>Expand and Strengthen the Community</p>
+								<p>Launch a new Nerva subreddit and continue growing the broader community through engagement, education, and outreach initiatives.</p>
+							</div>
+						</li>
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q1 / 2026</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Exchange Expansion</h4>
+								<p>Pursue New Exchange Listings</p>
+								<p>Following the 2025 delistings from XeggeX and TradeOgre, prioritize securing new exchange listings to improve liquidity, accessibility, and market resilience.</p>
+							</div>
+						</li>
+						
+
+						
+						<li class="timeline-item period">
+							<div class="timeline-info"></div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h3 class="timeline-title">2025</h3>
+							</div>
+						</li>
+						
+
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q1 / 2025</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Grow Nerva's X Presence</h4>
+								<p>Continue grinding on X and growing Nerva's account.</p>
+							</div>
+						</li>
+						
+						
+						
 						<li class="timeline-item period">
 							<div class="timeline-info"></div>
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h3 class="timeline-title">2024</h3>
+							</div>
+						</li>					
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q4 / 2024</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Release NervaOne Mobile</h4>
+								<p>*** This was put on hold for now because growing our community was higher priority.</p>
+								<p>Develop, test and release working version of NervaOne Mobile before the end of 2024.</p>
+							</div>
+						</li>
+						
+						<li class="timeline-item">
+							<div class="timeline-info">
+								<span>Q3 / 2024</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Start working on phase 2 of NervaOne</h4>
+								<p>NervaOne Desktop was developed and it replaced Nerva's old GUI. It's an open-source, non-custodial, multi-coin wallet and miner that currently supports $XNV, $XMR, $WOW and $DASH.
+									Start working on phase 2: mobile wallet that connects to your NervaOne Desktop to provide mobile wallet functionaity without the need to trust 3rd party.</p>
 							</div>
 						</li>
 						
@@ -583,6 +715,52 @@
             </div>
             <div class="row justify-content-center">
 			
+				<div class="col-12 col-lg-4">
+                    <div class="card exchanges">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body text-center">
+                                    <p><img src="https://nerva.one/xnv-app/uploads/2026/01/nonkyc_header_new.png" height="64"></p>
+                                    <h3 class="card-title">Nerva on NonKyc</h3>
+                                    <p class="card-text">Monero (XMR) trading pair</p>
+                                    <a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_XMR?ref=697b9a8bf1f764f0c423e239"
+                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                        XNV - XMR</a>
+									<br /><br />
+									
+									<p class="card-text">Tether (USDT) trading pair</p>
+									<a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_USDT?ref=697b9a8bf1f764f0c423e239"
+                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                        XNV - USDT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-lg-4">
+                    <div class="card exchanges">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body text-center">
+                                    <p><img src="https://nerva.one/xnv-app/uploads/2026/02/cexswap_logo.png" height="64"></p>
+                                    <h3 class="card-title">Nerva on CEXSwap</h3>
+                                    <p class="card-text">Monero (XMR) trading pair</p>
+                                    <a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-XMR"
+                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                        XNV - XMR</a>
+									<br /><br />
+									
+									<p class="card-text">Bitcoin (BTC) trading pair</p>
+									<a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-BTC"
+                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                        XNV - BTC</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- <div class="col-12 col-lg-4">
                     <div class="card exchanges">
                         <div class="card-body">
@@ -600,7 +778,7 @@
                     </div>
                 </div> -->
 				         
-                <div class="col-12 col-lg-4">
+                <!-- <div class="col-12 col-lg-4">
                     <div class="card exchanges">
                         <div class="card-body">
                             <div class="media">
@@ -621,21 +799,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 				
-				<div class="col-12 col-lg-4">
+				<!-- <div class="col-12 col-lg-4">
                     <div class="card exchanges">
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body text-center">
                                     <p><img src="https://nerva.one/xnv-app/uploads/2024/01/xeggex_logo.png" height="64"></p>
-                                    <h3 class="card-title">Nerva on XeggeX</h3>
-                                    <p class="card-text">Bitcoin (BTC) trading pair:</p>
-									<a class="btn btn-block btn-primary" href="https://xeggex.com/market/XNV_BTC"
-                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - BTC</a>
-									<br /><br />
-									
+                                    <h3 class="card-title">Nerva on XeggeX</h3>									
 									<p class="card-text">Tether (USDT) trading pair:</p>
                                     <a class="btn btn-block btn-primary" href="https://xeggex.com/market/XNV_USDT"
                                         target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
@@ -648,16 +820,17 @@
                                         XNV - USDC</a>
 									<br /><br />
 									
-									<p class="card-text">Xpense (XPE) trading pair:</p>
-									<a class="btn btn-block btn-primary" href="https://xeggex.com/market/XNV_XPE"
+									<p class="card-text">Bitcoin (BTC) trading pair:</p>
+									<a class="btn btn-block btn-primary" href="https://xeggex.com/market/XNV_BTC"
                                         target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - XPE</a>
+                                        XNV - BTC</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 				
+				<!--
 				<div class="col-12 col-lg-4">
                     <div class="card exchanges">
                         <div class="card-body">
@@ -674,6 +847,7 @@
                         </div>
                     </div>
                 </div>
+				-->
 				
                 <!--
 				<div class="col-12 col-lg-4">
@@ -739,14 +913,16 @@
                                 <span class="big-icon fab fa-linux gradient-fill"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Linux</h3>
-                                    <p class="card-text">Apps for Linux x64</p>
+                                    <p class="card-text">Apps for Linux</p>
                                     <p class="text-center">
                                         <small>For New Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Desktop App (GUI)&nbsp&nbsp&nbsp</a>
+										<a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_ARM64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (X64)&nbsp&nbsp&nbsp</a>
                                     </p>
                                     <p class="text-center">
                                         <small>For Advanced Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (CLI)</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (ARMV8)</a>
+										<a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X64)</a>
                                     </p>
                                     
                                 </div>
@@ -762,14 +938,15 @@
                                 <span class="big-icon fab fa-windows gradient-fill"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Windows</h3>
-                                    <p class="card-text">Apps for Windows x64</p>
+                                    <p class="card-text">Apps for Windows</p>
                                     <p class="text-center">
                                         <small>For New Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_GUI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Desktop App (GUI)&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_GUI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One Desktop&nbsp&nbsp&nbsp</a>
                                     </p>
                                     <p class="text-center">
                                         <small>For Advanced Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_CLI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (CLI)</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_CLI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X64)</a>
+										<a class="btn btn-block btn-primary" href="<?php echo WINDOWS_CLI_LINK_X32; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X32)</a>
                                     </p>
                                     
                                 </div>
@@ -785,14 +962,16 @@
                                 <span class="big-icon fab fa-apple gradient-fill"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Mac</h3>
-                                    <p class="card-text">Apps for Mac OS</p>
+                                    <p class="card-text">Apps for MacOS</p>
                                     <p class="text-center">
                                         <small>For New Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo MAC_GUI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Desktop App (GUI)&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo MAC_GUI_LINK_ARM64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>
+										<a class="btn btn-block btn-primary" href="<?php echo MAC_GUI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (X64)&nbsp&nbsp&nbsp</a>
                                     </p>
                                     <p class="text-center">
                                         <small>For Advanced Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo MAC_CLI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (CLI)</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo MAC_CLI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (ARMV8)</a>
+										<a class="btn btn-block btn-primary" href="<?php echo MAC_CLI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X64)</a>
                                     </p>                                    
                                 </div>
                             </div>
@@ -807,6 +986,7 @@
 
             <div class="row">
 				
+				<!--
 				<div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">
@@ -823,6 +1003,29 @@
                                         <a class="btn btn-block btn-primary" href="https://apps.apple.com/app/dogecash-app/id6448373096"><span class="fa fa-download"></span> &nbsp; iOS App (Apple Store)</a>
                                     </p>
                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				-->
+				
+				<div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="big-icon fab fa-android gradient-fill"></span>
+                                <div class="media-body">
+                                    <h3 class="card-title">Android</h3>
+                                    <p class="card-text">Apps for Android</p>
+                                    <p class="text-center">
+                                        <small>For New Users</small>
+										<a class="btn btn-block btn-primary" href="<?php echo ANDROID_GUI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>                                   
+                                    </p>
+                                    <p class="text-center">
+                                        <small>For Advanced Users</small>
+                                        <a class="btn btn-block btn-primary" href="<?php echo ANDROID_CLI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (ARM)</a>
+                                    </p>  
                                 </div>
                             </div>
                         </div>
@@ -941,6 +1144,7 @@
 						<a href="https://twitter.com/NervaCurrency" class="fab fa-twitter fa-2x box-icon gradient-fill"></a>
 						<a href="https://t.me/NervaCrypto" class="fab fa-telegram fa-2x box-icon gradient-fill"></a>
 						<a href="https://www.youtube.com/channel/UC84v_i1iNZrLUUA9XbhuCAQ" class="fab fa-youtube fa-2x box-icon gradient-fill"></a>
+						<a href="https://www.reddit.com/r/NervaCrypto/" class="fab fa-reddit fa-2x box-icon gradient-fill"></a>
 						<a href="https://github.com/nerva-project" class="fab fa-github fa-2x box-icon gradient-fill"></a>
 					</p>
                 </div>

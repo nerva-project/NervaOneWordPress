@@ -29,6 +29,26 @@
     <!-- Google Analytics Ends -->
 	
 	<?php wp_head(); ?>
+	
+	<script>
+		function updateXNVSupply() {
+		  fetch('https://api.nerva.one/daemon/explorer/index.php?endpoint=get_generated_coins')
+			.then(r => r.text())
+			.then(function(data) {
+			  var supply = parseFloat(data).toLocaleString('en-US', {
+				minimumFractionDigits: 0,
+				maximumFractionDigits: 0
+			  });
+			  document.getElementById('xnv-supply').innerText = supply;
+			})
+			.catch(function() {
+			  document.getElementById('xnv-supply').innerText = '19.19 million XNV (Apr 2026)';
+			});
+		}
+
+		updateXNVSupply();
+		setInterval(updateXNVSupply, 60000); // refreshes every 60 seconds
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -91,7 +111,7 @@
 							</li>
 							
 							<li class="menu-item menu-item-has-children dropdown nav-item">
-							<a href="#moredd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link">MORE</a>
+							<a href="#moredd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link">RESOURCES</a>
 								<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-31269" role="menu">
 									<li class="menu-item nav-item">
 										<?php // No if else for href needed because of absolute urls ?>
