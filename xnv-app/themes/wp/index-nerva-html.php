@@ -397,7 +397,8 @@
 			<div class="row">			
 				 <div class="col-sm-12">
                     <div style="height:700px;">
-						<iframe src="https://map.nerva.one/nodemap.html" width="100%" height="100%" style="border:none;" allowfullscreen=""></iframe>
+						<iframe id="nodemap-frame" src="" width="100%" height="100%" style="border:none;" allowfullscreen=""></iframe>
+						<script>(function(){var dark=document.documentElement.classList.contains('dark-mode');document.getElementById('nodemap-frame').src='https://map.nerva.one/nodemap.html?theme='+(dark?'dark':'light');})();</script>
                     </div>
 				</div>
 			<div class="spacer-2x hidden-xs"></div>
