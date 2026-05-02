@@ -177,5 +177,24 @@ jQuery( function ( $ ) {
             }
         });
     }
-	
+
+    /*-----------------------------------
+     * DARK MODE TOGGLE
+     *-----------------------------------*/
+    var $darkBtn = $('#dark-mode-toggle');
+    var $darkIcon = $('#dark-mode-icon');
+
+    function syncDarkIcon() {
+        var dark = document.documentElement.classList.contains('dark-mode');
+        $darkIcon.attr('class', dark ? 'fas fa-sun' : 'fas fa-moon');
+    }
+    syncDarkIcon();
+
+    $darkBtn.on('click', function() {
+        var dark = document.documentElement.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', !dark);
+        localStorage.setItem('nerva-theme', !dark ? 'dark' : 'light');
+        syncDarkIcon();
+    });
+
 });

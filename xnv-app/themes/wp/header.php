@@ -12,6 +12,7 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+    <script>(function(){var s=localStorage.getItem('nerva-theme'),p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&p)){document.documentElement.classList.add('dark-mode');}})();</script>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -150,6 +151,10 @@
 					'walker'          => new wp_bootstrap_navwalker()
 					));
 					?>
+
+					<button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+						<i id="dark-mode-icon" class="fas fa-moon"></i>
+					</button>
 
 				</nav>
 			</div>
