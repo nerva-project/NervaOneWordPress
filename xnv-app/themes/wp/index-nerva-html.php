@@ -38,7 +38,7 @@
 							<tr>
 								<td style="text-align:right"><b>Annual Inflation:</b></td>
 								<td></td>
-								<td style="text-align:left">157800 XNV (0.831%)</td>
+								<td style="text-align:left">157800 XNV (0.82%)</td>
 							</tr>
 							<tr>
 								<td style="text-align:right"><b>Consensus:</b></td>
@@ -723,16 +723,18 @@
                                 <div class="media-body text-center">
                                     <p><img src="https://nerva.one/xnv-app/uploads/2026/01/nonkyc_header_new.png" height="64"></p>
                                     <h3 class="card-title">Nerva on NonKyc</h3>
-                                    <p class="card-text">Monero (XMR) trading pair</p>
-                                    <a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_XMR?ref=697b9a8bf1f764f0c423e239"
-                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - XMR</a>
-									<br /><br />
-									
-									<p class="card-text">Tether (USDT) trading pair</p>
-									<a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_USDT?ref=697b9a8bf1f764f0c423e239"
-                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - USDT</a>
+                                    <p class="text-center">
+                                        <small>Monero (XMR) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_XMR?ref=697b9a8bf1f764f0c423e239"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - XMR</a>
+                                    </p>
+                                    <p class="text-center">
+                                        <small>Tether (USDT) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://nonkyc.io/market/XNV_USDT?ref=697b9a8bf1f764f0c423e239"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - USDT</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -746,21 +748,70 @@
                                 <div class="media-body text-center">
                                     <p><img src="https://nerva.one/xnv-app/uploads/2026/02/cexswap_logo.png" height="64"></p>
                                     <h3 class="card-title">Nerva on CEXSwap</h3>
-                                    <p class="card-text">Monero (XMR) trading pair</p>
-                                    <a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-XMR"
-                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - XMR</a>
-									<br /><br />
-									
-									<p class="card-text">Bitcoin (BTC) trading pair</p>
-									<a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-BTC"
-                                        target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
-                                        XNV - BTC</a>
+                                    <p class="text-center">
+                                        <small>Monero (XMR) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-XMR"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - XMR</a>
+                                    </p>
+                                    <p class="text-center">
+                                        <small>Bitcoin (BTC) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://cexswap.cc/trade/XNV-BTC"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - BTC</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+				<div class="col-12 col-lg-4">
+                    <div class="card exchanges">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body text-center">
+                                    <p><img src="https://nerva.one/xnv-app/uploads/2026/05/noirtrade_logo.png" height="64"></p>
+                                    <h3 class="card-title">Nerva on NoirTrade</h3>
+                                    <p class="text-center">
+                                        <small>Tether (USDT) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://noirtrade.com/trade?pair=XNV_USDT0"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - USDT</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+            <div class="spacer hidden-xs"></div>
+
+            <div class="row justify-content-center">
+
+				<div class="col-12 col-lg-4">
+                    <div class="card exchanges">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body text-center">
+                                    <p><img src="https://nerva.one/xnv-app/uploads/2026/05/klingex_logo.png" height="64"></p>
+                                    <h3 class="card-title">Nerva on KlingEx</h3>
+                                    <p class="text-center">
+                                        <small>Tether (USDT) trading pair</small>
+                                        <a class="btn btn-block btn-primary" href="https://klingex.io/trade/XNV-USDT"
+                                            target="_blank" rel="nofollow"><span class="fa fa-exchange-alt"></span> &nbsp;
+                                            XNV - USDT</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
                 <!-- <div class="col-12 col-lg-4">
                     <div class="card exchanges">
