@@ -1,0 +1,297 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="xnv-calcwrap">
+	<div class="xnv-calc">
+
+		<div class="xnv-entry">			
+		<label for="ownHashrate">Your total hashrate (kH/s):</label>
+		<input type="number" id="ownHashrate" placeholder="Your Hashrate" ,="" value="7"><br>
+		</div>
+		
+		<div class="xnv-entry">
+		<label for="totalHashrate">Total network hashrate (kH/s):</label>
+		<input type="number" id="totalHashrate" placeholder="Total Hashrate" value="160"><br>
+		</div>
+		
+		<div id="xnv-hicb" class="xnv-entry">
+			<label for="hashrateIncluded">Is your hashrate already included in the total?</label>
+			<input type="checkbox" id="hashrateIncluded">
+		</div>
+
+		<div class="xnv-entry">
+		<label for="energyPrice">Your local electricity price ($/kWh):</label>
+		<input type="number" id="energyPrice" placeholder="Energy Price" value="0.18"><br>
+		</div>
+		
+		<div class="xnv-entry">
+		<label for="powerConsumption">Power consumption of your miner(s) (W):</label>
+		<input type="number" id="powerConsumption" placeholder="Power Consumption" value="175"><br>
+		</div>
+		
+		<div class="xnv-entry">
+		<label for="nervaPrice">current XNV price ($):</label>
+		<input type="number" id="nervaPrice" placeholder="NERVA Price" value="0.06"><br>
+		</div>
+		
+		<button class="btn btn-primary" onclick="calculateProfit()">Calculate!</button>
+		
+	</div>
+
+	<div id="results-section" style="display:none">
+		<h3>Results:</h3>
+		<div id="results"></div>
+		<div id="result-chart">
+			<canvas id="profitChart"></canvas>
+		</div>
+	</div>
+
+</div>
+
+<div>
+<h3>Sample NERVA CPU Mining Benchmarks</h3>
+<table class="xnv-bench">
+      <thead>
+        <tr>
+          <th>CPU</th>
+          <th>kH/s</th>
+          <th>Threads</th>
+          <th>Settings</th>
+          <th>RAM Configuration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Athlon 300GE</td><td>0.8</td><td>4</td><td>stock</td><td>1x DDR4 2866</td></tr>
+        <tr><td>EPYC 7282 (x1)</td><td>11.1</td><td>64</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>EPYC 7282 (x1)</td><td>6</td><td>32</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>EPYC 7401p (x1)</td><td>6.1</td><td>48</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>EPYC 7452 (x1)</td><td>10.5</td><td>64?</td><td>stock</td><td>4x DDR4 3200</td></tr>
+        <tr><td>EPYC 7452 (x2)</td><td>21</td><td>128</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>EPYC 7452 (x2)</td><td>19.3</td><td>128</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>EPYC 7452 (x2)</td><td>17</td><td>96</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i5-1135G7</td><td>1</td><td>8</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-1135G7</td><td>1</td><td>6</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-1135G7</td><td>0.9</td><td>4</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-1135G7</td><td>0.6</td><td>2</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-1135G7</td><td>0.4</td><td>1</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-2500</td><td>0.6</td><td>4</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i5-6200U</td><td>0.5</td><td>4</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>i5-8250U</td><td>0.8</td><td>8</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i5-8400</td><td>1.1</td><td>4</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i7-10700F</td><td>2.5</td><td>14</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i7-6700</td><td>1.3</td><td>8</td><td>4.0 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i7-7700HQ</td><td>1.1</td><td>8</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i7-8700k</td><td>2.2</td><td>10</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i9-10900F</td><td>3</td><td>19</td><td>3.2 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>i9-10900F</td><td>0.7</td><td>3</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>mac mini 2020</td><td>0.8</td><td>8</td><td>stock</td><td>—</td></tr>
+        <tr><td>MacBook Air M1</td><td>0.8</td><td>8</td><td>stock</td><td>—</td></tr>
+        <tr><td>MacBook Pro 16" i7</td><td>2.1</td><td>6</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>MacBook Pro 2017, 13" i7</td><td>0.6</td><td>4</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>MacBook Pro M1</td><td>1.3</td><td>8</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>ODROID-C4</td><td>0.07</td><td>8</td><td>stock</td><td>—</td></tr>
+        <tr><td>Ryzen 5 3600</td><td>2.7</td><td>12</td><td>4 GHz</td><td>1x DDR4 2866</td></tr>
+        <tr><td>Ryzen 5 3600</td><td>2.5</td><td>11</td><td>4.2 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 5 3600X</td><td>2.4</td><td>10</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 5 5600G</td><td>2.8</td><td>12</td><td>stock</td><td>2x DDR4 2866</td></tr>
+        <tr><td>Ryzen 5 5600G</td><td>2.2</td><td>12</td><td>35W eco</td><td>2x DDR4 2866</td></tr>
+        <tr><td>Ryzen 7 1700</td><td>2.3</td><td>14</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 7 2700X</td><td>2.3</td><td>10</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 7 3700X</td><td>2.2</td><td>8</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 7 3800X</td><td>3</td><td>10</td><td>stock, PBO</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 3900X</td><td>5.2</td><td>24</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 3900X</td><td>4.7</td><td>20</td><td>4 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 3950X</td><td>7.3</td><td>32</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 3950X</td><td>7</td><td>32</td><td>4 GHz @ 1.25V</td><td>2x DDR4 3333 @ 1.39V</td></tr>
+        <tr><td>Ryzen 9 3950X</td><td>6.8</td><td>30</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 5900X</td><td>6</td><td>24</td><td>4.47 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 5900X</td><td>5.8</td><td>23</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 5950X</td><td>8.2</td><td>32</td><td>4.45 GHz @ 1.275V</td><td>2x DDR4 3000, CL16</td></tr>
+        <tr><td>Ryzen 9 5950X</td><td>6.8</td><td>32</td><td>stock 3.6 GHz @ 1.06V</td><td>2x DDR4 3000, CL16</td></tr>
+        <tr><td>Ryzen 9 5950X</td><td>6</td><td>32</td><td>3.175 GHz @ 0.9875V</td><td>2x DDR4 8GB 3000 CL16</td></tr>
+        <tr><td>Ryzen 9 5950X</td><td>6.7</td><td>31</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Ryzen 9 7950X</td><td>5.3</td><td>16</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Samsung Galaxy S10</td><td>0.2</td><td>8</td><td>stock</td><td>—</td></tr>
+        <tr><td>Xeon E5 2620 v3</td><td>1.3</td><td>12</td><td>2.4 GHz</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Xeon E5-1650 v3</td><td>1.6</td><td>12</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Xeon E5-2609 v2 (x2)</td><td>1.1</td><td>8</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2609 v2 (x2)</td><td>0.9</td><td>6</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>Xeon E5-2640 (x2)</td><td>2</td><td>24</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2650L (x2)</td><td>1.9</td><td>32</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2650L v2 (x2)</td><td>2.7</td><td>40</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2658 (x2)</td><td>2.2</td><td>32</td><td>stock</td><td>dual channel</td></tr>
+        <tr><td>Xeon E5-2658 v2 (x2)</td><td>3.7</td><td>40</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2670 v2 (x2)</td><td>3.7</td><td>36</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2670 v2 (x2)</td><td>3.5</td><td>30</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-2690 (x2)</td><td>3.6</td><td>32</td><td>stock</td><td>quad channel?</td></tr>
+        <tr><td>Xeon E5-4650 v2 (x4)</td><td>8</td><td>80</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Xeon x5660 (x2)</td><td>1.4</td><td>24</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Xeon x5660 (x2)</td><td>1.2</td><td>12</td><td>2.8 GHz</td><td>quad channel?</td></tr>
+        <tr><td>Xeon x5670</td><td>1.1</td><td>14</td><td>stock</td><td class="not-reported">not reported</td></tr>
+        <tr><td>Xeon x5675 (x1)</td><td>0.7</td><td>12</td><td>stock</td><td>quad channel?</td></tr>
+      </tbody>
+    </table>
+</div>
+
+
+<script>
+const NERVA_PER_MINUTE = 0.3;
+const MINUTES_PER_DAY = 1440;
+const DAYS_PER_MONTH = 30;
+
+function calculateProfitForHashrate(hashrate) {
+    const userHashrate = parseFloat(document.getElementById('ownHashrate').value) || 0;
+    const userPowerConsumption = parseFloat(document.getElementById('powerConsumption').value) || 0;
+    const energyPrice = parseFloat(document.getElementById('energyPrice').value) || 0;
+    const nervaPrice = parseFloat(document.getElementById('nervaPrice').value) || 0;
+    const totalHashrate = parseFloat(document.getElementById('totalHashrate').value) || 0;
+
+    const avgWattagePerKH = userPowerConsumption / userHashrate || 0;
+    const estimatedPowerConsumption = avgWattagePerKH * hashrate;
+    const kWh = estimatedPowerConsumption / 1000;
+
+    const shareOfNetwork = hashrate / (totalHashrate + hashrate);
+    const nervaPerMonth = NERVA_PER_MINUTE * MINUTES_PER_DAY * DAYS_PER_MONTH * shareOfNetwork;
+
+    const energyCostPerMonth = kWh * 24 * DAYS_PER_MONTH * energyPrice;
+
+    return nervaPerMonth * nervaPrice - energyCostPerMonth;
+}
+
+function updateChart() {
+    if (profitChartInstance) {
+        profitChartInstance.destroy();
+    }
+
+    const ctx = document.getElementById('profitChart').getContext('2d');
+    const labels = Array.from({ length: 50 }, (_, i) => i * 1);
+    const data = labels.map(label => calculateProfitForHashrate(label));
+
+    profitChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Profit based on your input ($)',
+                data: data,
+                backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                borderColor: 'rgba(0, 123, 255, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            aspectRatio: 1.2,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Monthly Profit ($)'
+                    }
+                },
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Your Hashrate (kH/s)'
+                    }
+                }
+            }
+        }
+    });
+}
+
+let profitChartInstance = null;
+
+function calculateProfit() {
+    const ownHashrate = parseFloat(document.getElementById('ownHashrate').value) || 0;
+    const totalHashrate = parseFloat(document.getElementById('totalHashrate').value) || 0;
+    const isHashrateIncluded = document.getElementById('hashrateIncluded').checked;
+    const energyPrice = parseFloat(document.getElementById('energyPrice').value) || 0;
+    const powerConsumption = parseFloat(document.getElementById('powerConsumption').value) || 0;
+    const nervaPrice = parseFloat(document.getElementById('nervaPrice').value) || 0;
+
+    const kWh = powerConsumption / 1000;
+
+    let shareOfNetwork = isHashrateIncluded ? ownHashrate / totalHashrate : ownHashrate / (totalHashrate + ownHashrate);
+
+    const nervaPerDay = NERVA_PER_MINUTE * MINUTES_PER_DAY * shareOfNetwork;
+    const nervaPerWeek = nervaPerDay * 7;
+    const nervaPerMonth = nervaPerDay * DAYS_PER_MONTH;
+
+    const energyCostPerDay = kWh * 24 * energyPrice;
+    const energyCostPerWeek = energyCostPerDay * 7;
+    const energyCostPerMonth = energyCostPerDay * DAYS_PER_MONTH;
+
+    const profitPerDay = nervaPerDay * nervaPrice - energyCostPerDay;
+    const profitPerWeek = nervaPerWeek * nervaPrice - energyCostPerWeek;
+    const profitPerMonth = nervaPerMonth * nervaPrice - energyCostPerMonth;
+
+    document.getElementById('results').innerHTML = `
+    <ul>
+        <li>Average XNV mined per day: ${nervaPerDay.toFixed(2)}</li>
+        <li>Average XNV mined per week: ${nervaPerWeek.toFixed(2)}</li>
+        <li>Average XNV mined per month: ${nervaPerMonth.toFixed(2)}</li>
+        <li>Electricity cost per day: $${energyCostPerDay.toFixed(2)}</li>
+        <li>Electricity cost per week: $${energyCostPerWeek.toFixed(2)}</li>
+        <li>Electricity cost per month: $${energyCostPerMonth.toFixed(2)}</li>
+        <li>Profit per day: $${profitPerDay.toFixed(2)}</li>
+        <li>Profit per week: $${profitPerWeek.toFixed(2)}</li>
+        <li>Profit per month: $${profitPerMonth.toFixed(2)}</li>
+    </ul>
+    `;
+
+    document.getElementById('results-section').style.display = 'block';
+
+    updateChart();
+}
+</script>
+
+
+<style>
+
+.xnv-calcwrap {
+     margin-bottom: 55px !important;
+     max-width: 400px;
+     margin: 0 auto;
+}
+
+.xnv-calc {
+     margin-bottom: 35px;
+}
+
+#xnv-hicb {
+    margin: 7px 0 15px 0;
+}
+
+.xnv-calcwrap label {
+     font-size: 90%;
+     margin: 0 0 -2px 0;
+}
+
+.xnv-calcwrap input {
+     width: 100%;
+     margin-bottom: 12px;
+}
+
+#hashrateIncluded {
+	width: 20px;
+	height: 20px;
+	margin: 3px 10px 0 0;
+	float: left;
+}
+
+#results ul {
+    margin: 15px 0 20px -20px;
+}
+
+#profitChart {
+    height: 270px !important;
+    width: 270px !important;
+}
+
+.xnv-bench th,
+.xnv-bench td {
+    border: 1px solid #ccc;
+}
+
+</style>
