@@ -186,7 +186,7 @@
     border-top: 1px solid #2e2d2c;
     text-align: center;
     font-size: .72rem;
-    color: #444;
+    color: #888;
     letter-spacing: .1em;
     text-transform: uppercase;
 }
@@ -214,17 +214,12 @@
 .mw-update-note {
     margin-top: 12px;
     font-size: .75rem;
-    color: #666;
+    color: #888;
 }
 
 /* ── Responsive: widget scrolls on small screens ── */
 @media (max-width: 680px) {
     .milestones-wrap {
         align-items: stretch;
-        overflow-x: auto;
-    }
-
-    #milestones-widget {
-        width: 620px; /* keep fixed so screenshot stays consistent */
     }
 }
