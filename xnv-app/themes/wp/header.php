@@ -129,6 +129,9 @@
 										<?php // No if else for href needed because of absolute urls ?>
 										<a class="dropdown-item" href="https://nerva.one/nerva-mining-profitability-calculator/" target="_blank">CALCULATOR</a>
 									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="<?php echo esc_url( home_url( '/nerva-milestones/' ) ); ?>">MILESTONES</a>
+									</li>
 								</ul>
 							</li>							
 						</ul>
