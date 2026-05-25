@@ -65,12 +65,14 @@ function nerva_milestones_meta_tags() {
         return;
     }
 
-    $hour_key   = current_time( 'Y-m-d-H' );
+    global $wpdb;
+    $table      = $wpdb->prefix . 'nerva_tracker_snapshots';
+    $latest_id  = $wpdb->get_var( "SELECT id FROM $table ORDER BY snapshot_time DESC LIMIT 1" );
     $upload_dir = wp_upload_dir();
-    $file_path  = $upload_dir['basedir'] . '/nerva-milestones/' . $hour_key . '.png';
-    $file_url   = $upload_dir['baseurl'] . '/nerva-milestones/' . $hour_key . '.png';
+    $file_path  = $upload_dir['basedir'] . '/nerva-milestones/' . $latest_id . '.png';
+    $file_url   = $upload_dir['baseurl'] . '/nerva-milestones/' . $latest_id . '.png';
 
-    $og_image = file_exists( $file_path )
+    $og_image = ( $latest_id && file_exists( $file_path ) )
         ? esc_url( $file_url )
         : esc_url( get_template_directory_uri() . '/images/png-nerva-logo-white-256x256.png' );
 
@@ -273,10 +275,15 @@ function nerva_milestones_get_comparison( WP_REST_Request $request ) {
 
 
 function nerva_milestones_check_screenshot( WP_REST_Request $request ) {
-    $hour_key   = current_time( 'Y-m-d-H' );
+    $snapshot_id = absint( $request->get_param( 'snapshot_id' ) );
+
+    if ( ! $snapshot_id ) {
+        return new WP_Error( 'missing_param', 'snapshot_id is required.', [ 'status' => 400 ] );
+    }
+
     $upload_dir = wp_upload_dir();
-    $file_path  = $upload_dir['basedir'] . '/nerva-milestones/' . $hour_key . '.png';
-    $file_url   = $upload_dir['baseurl'] . '/nerva-milestones/' . $hour_key . '.png';
+    $file_path  = $upload_dir['basedir'] . '/nerva-milestones/' . $snapshot_id . '.png';
+    $file_url   = $upload_dir['baseurl'] . '/nerva-milestones/' . $snapshot_id . '.png';
 
     if ( file_exists( $file_path ) ) {
         return rest_ensure_response( [ 'exists' => true, 'url' => $file_url ] );
@@ -287,7 +294,12 @@ function nerva_milestones_check_screenshot( WP_REST_Request $request ) {
 
 
 function nerva_milestones_save_screenshot( WP_REST_Request $request ) {
-    $image_data = $request->get_param( 'image' );
+    $snapshot_id = absint( $request->get_param( 'snapshot_id' ) );
+    $image_data  = $request->get_param( 'image' );
+
+    if ( ! $snapshot_id ) {
+        return new WP_Error( 'missing_param', 'snapshot_id is required.', [ 'status' => 400 ] );
+    }
 
     if ( empty( $image_data ) ) {
         return new WP_Error( 'no_image', 'No image data provided.', [ 'status' => 400 ] );
@@ -313,11 +325,10 @@ function nerva_milestones_save_screenshot( WP_REST_Request $request ) {
         wp_mkdir_p( $dir_path );
     }
 
-    $hour_key  = current_time( 'Y-m-d-H' );
-    $file_path = $dir_path . $hour_key . '.png';
-    $file_url  = $upload_dir['baseurl'] . '/nerva-milestones/' . $hour_key . '.png';
+    $file_path = $dir_path . $snapshot_id . '.png';
+    $file_url  = $upload_dir['baseurl'] . '/nerva-milestones/' . $snapshot_id . '.png';
 
-    // Return existing file if already saved this hour (idempotent)
+    // Return existing file if already saved for this snapshot (idempotent)
     if ( file_exists( $file_path ) ) {
         return rest_ensure_response( [ 'url' => $file_url ] );
     }

@@ -25,7 +25,8 @@
     ];
     // =========================================================================
 
-    var PROJECT_START = new Date('2018-05-01');
+    var PROJECT_START      = new Date('2018-05-01');
+    var currentSnapshotId  = null;
 
     // ── Formatters ────────────────────────────────────────────────────────
 
@@ -124,6 +125,7 @@
     // ── Populate stats ────────────────────────────────────────────────────
 
     function populate(snapshot, comparison) {
+        currentSnapshotId = snapshot.id;
         document.getElementById('mw-age').textContent     = formatAge();
         document.getElementById('mw-updated').textContent = formatUpdated(snapshot.snapshot_time);
         document.getElementById('mw-price').textContent   = formatPrice(snapshot.price_usd);
@@ -175,7 +177,7 @@
         btn.textContent  = 'Generating…';
         instructions.style.display = 'none';
 
-        fetch(nervaMilestones.apiBase + '/milestones/screenshot')
+        fetch(nervaMilestones.apiBase + '/milestones/screenshot?snapshot_id=' + currentSnapshotId)
             .then(function (r) { return r.json(); })
             .then(function (check) {
                 if (check.exists) {
@@ -196,7 +198,7 @@
                                     'Content-Type': 'application/json',
                                     'X-WP-Nonce':   nervaMilestones.nonce,
                                 },
-                                body: JSON.stringify({ image: dataUrl }),
+                                body: JSON.stringify({ image: dataUrl, snapshot_id: currentSnapshotId }),
                             }).then(function () { return blob; });
                         });
                     });
@@ -213,7 +215,10 @@
                         '🔗 ' + nervaMilestones.pageUrl;
 
                     if (copied) {
-                        instructions.innerHTML = '<strong>Screenshot copied to clipboard!</strong><br><br>';
+                        instructions.innerHTML =
+                            '<strong>Screenshot copied to clipboard!</strong><br><br>' +
+                            'In the tweet that just opened, paste with ' +
+                            '<strong>Ctrl+V</strong> (Windows) or <strong>⌘V</strong> (Mac) to attach the image.<br><br>';
                     } else {
                         instructions.innerHTML =
                             'Your browser does not support clipboard images.<br>' +
