@@ -209,13 +209,11 @@
                     var ch24  = document.getElementById('mw-24h').textContent;
                     var tweet =
                         'Nerva $XNV progress update 🚀\n\n' +
-                        'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24 + '\n';
+                        'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24 + '\n\n' +
+                        '🔗 ' + nervaMilestones.pageUrl;
 
                     if (copied) {
-                        instructions.innerHTML =
-                            '<strong>Screenshot copied to clipboard!</strong><br>' +
-                            'In the tweet that just opened, click the image icon or press ' +
-                            '<strong>Ctrl+V</strong> (Windows) / <strong>⌘V</strong> (Mac) to paste it.';
+                        instructions.innerHTML = '<strong>Screenshot copied to clipboard!</strong><br><br>';
                     } else {
                         instructions.innerHTML =
                             'Your browser does not support clipboard images.<br>' +
@@ -224,9 +222,7 @@
                     instructions.style.display = 'block';
 
                     window.open(
-                        'https://twitter.com/intent/tweet' +
-                        '?text=' + encodeURIComponent(tweet) +
-                        '&url='  + encodeURIComponent(nervaMilestones.pageUrl),
+                        'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet),
                         '_blank', 'noopener'
                     );
                 });
@@ -259,8 +255,13 @@
         ])
         .then(function (results) {
             populate(results[0], results[1]);
-            loading.style.display  = 'none';
-            shareBtn.style.display = 'inline-block';
+            loading.style.display      = 'none';
+            shareBtn.style.display     = 'inline-block';
+            var instructions = document.getElementById('mw-share-instructions');
+            instructions.innerHTML     =
+                'Click <strong>Share on X</strong>, then paste the screenshot into your tweet with ' +
+                '<strong>Ctrl+V</strong> (Windows) or <strong>⌘V</strong> (Mac).';
+            instructions.style.display = 'block';
         })
         .catch(function (err) {
             console.error('Failed to load milestones data:', err);
