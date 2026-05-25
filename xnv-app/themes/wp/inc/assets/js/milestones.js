@@ -145,15 +145,42 @@
 
     // ── Share flow ────────────────────────────────────────────────────────
 
+    function canvasToBlob(canvas) {
+        return new Promise(function (resolve) {
+            canvas.toBlob(resolve, 'image/png');
+        });
+    }
+
+    function blobToDataUrl(blob) {
+        return new Promise(function (resolve) {
+            var reader = new FileReader();
+            reader.onload = function () { resolve(reader.result); };
+            reader.readAsDataURL(blob);
+        });
+    }
+
+    function copyBlobToClipboard(blob) {
+        if (!navigator.clipboard || !window.ClipboardItem) {
+            return Promise.resolve(false);
+        }
+        return navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+        ]).then(function () { return true; }).catch(function () { return false; });
+    }
+
     function share() {
-        var btn         = document.getElementById('mw-share-btn');
-        btn.disabled    = true;
-        btn.textContent = 'Generating…';
+        var btn          = document.getElementById('mw-share-btn');
+        var instructions = document.getElementById('mw-share-instructions');
+        btn.disabled     = true;
+        btn.textContent  = 'Generating…';
+        instructions.style.display = 'none';
 
         fetch(nervaMilestones.apiBase + '/milestones/screenshot')
             .then(function (r) { return r.json(); })
             .then(function (check) {
-                if (check.exists) return check.url;
+                if (check.exists) {
+                    return fetch(check.url).then(function (r) { return r.blob(); });
+                }
 
                 return html2canvas(document.getElementById('milestones-widget'), {
                     backgroundColor: '#1b1a19',
@@ -161,31 +188,48 @@
                     useCORS: true,
                     logging: false,
                 }).then(function (canvas) {
-                    return fetch(nervaMilestones.apiBase + '/milestones/screenshot', {
-                        method:  'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-WP-Nonce':   nervaMilestones.nonce,
-                        },
-                        body: JSON.stringify({ image: canvas.toDataURL('image/png') }),
-                    }).then(function (r) { return r.json(); })
-                      .then(function (d) { return d.url; });
+                    return canvasToBlob(canvas).then(function (blob) {
+                        return blobToDataUrl(blob).then(function (dataUrl) {
+                            return fetch(nervaMilestones.apiBase + '/milestones/screenshot', {
+                                method:  'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-WP-Nonce':   nervaMilestones.nonce,
+                                },
+                                body: JSON.stringify({ image: dataUrl }),
+                            }).then(function () { return blob; });
+                        });
+                    });
                 });
             })
-            .then(function (screenshotUrl) {
-                var price  = document.getElementById('mw-price').textContent;
-                var mcap   = document.getElementById('mw-mcap').textContent;
-                var ch24   = document.getElementById('mw-24h').textContent;
-                var tweet  =
-                    'Nerva $XNV progress update 🚀\n' +
-                    'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24;
+            .then(function (blob) {
+                return copyBlobToClipboard(blob).then(function (copied) {
+                    var price = document.getElementById('mw-price').textContent;
+                    var mcap  = document.getElementById('mw-mcap').textContent;
+                    var ch24  = document.getElementById('mw-24h').textContent;
+                    var tweet =
+                        'Nerva $XNV progress update 🚀\n\n' +
+                        'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24 + '\n';
 
-                window.open(
-                    'https://twitter.com/intent/tweet' +
-                    '?text=' + encodeURIComponent(tweet) +
-                    '&url='  + encodeURIComponent(nervaMilestones.pageUrl),
-                    '_blank', 'noopener'
-                );
+                    if (copied) {
+                        instructions.innerHTML =
+                            '<strong>Screenshot copied to clipboard!</strong><br>' +
+                            'In the tweet that just opened, click the image icon or press ' +
+                            '<strong>Ctrl+V</strong> (Windows) / <strong>⌘V</strong> (Mac) to paste it.';
+                    } else {
+                        instructions.innerHTML =
+                            'Your browser does not support clipboard images.<br>' +
+                            '<a href="' + URL.createObjectURL(blob) + '" download="nerva-milestones.png">Download the screenshot</a> and attach it manually to your tweet.';
+                    }
+                    instructions.style.display = 'block';
+
+                    window.open(
+                        'https://twitter.com/intent/tweet' +
+                        '?text=' + encodeURIComponent(tweet) +
+                        '&url='  + encodeURIComponent(nervaMilestones.pageUrl),
+                        '_blank', 'noopener'
+                    );
+                });
             })
             .catch(function (err) {
                 console.error('Share error:', err);

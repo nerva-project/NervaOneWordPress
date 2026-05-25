@@ -66,6 +66,7 @@ get_header();
                 <button class="btn btn-primary mw-share-btn" id="mw-share-btn" style="display:none">
                     <span class="fab fa-x-twitter"></span>&nbsp; Share on X
                 </button>
+                <p class="mw-share-instructions" id="mw-share-instructions" style="display:none"></p>
                 <p class="mw-update-note">Data is sourced from CoinGecko and updates every 15 minutes.</p>
             </div>
 

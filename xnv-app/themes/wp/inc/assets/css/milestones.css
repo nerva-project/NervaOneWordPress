@@ -211,6 +211,17 @@
     min-width: 160px;
 }
 
+.mw-share-instructions {
+    margin-top: 12px;
+    font-size: .85rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.mw-share-instructions a {
+    color: #55a8bf;
+}
+
 .mw-update-note {
     margin-top: 12px;
     font-size: .75rem;
