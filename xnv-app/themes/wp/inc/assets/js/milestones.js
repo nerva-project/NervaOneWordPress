@@ -178,7 +178,7 @@
                 var tweet  =
                     'Nerva $XNV progress update 🚀\n' +
                     'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24 + '\n' +
-                    '#Nerva #XNV #CryptoMining';
+                    '#Nerva $XNV';
 
                 window.open(
                     'https://twitter.com/intent/tweet' +

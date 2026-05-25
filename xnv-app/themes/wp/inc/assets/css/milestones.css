@@ -14,7 +14,8 @@
 
 /* ── Widget card (this is the html2canvas capture target) ── */
 #milestones-widget {
-    width: 620px;
+    width: 100%;
+    max-width: 620px;
     background: #1b1a19;
     border-radius: 12px;
     padding: 28px 32px 20px;
@@ -66,6 +67,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    justify-content: center;
     gap: 0;
     margin-bottom: 24px;
     padding-bottom: 20px;
@@ -87,6 +89,7 @@
     display: flex;
     gap: 20px;
     flex-basis: 100%;
+    justify-content: center;
     padding-top: 14px;
     margin-top: 2px;
     border-top: 1px solid #2e2d2c;
@@ -140,7 +143,7 @@
 
 .mw-goal-target {
     font-size: .72rem;
-    color: #666;
+    color: #999;
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
