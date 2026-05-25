@@ -184,11 +184,22 @@
                     return fetch(check.url).then(function (r) { return r.blob(); });
                 }
 
+                if (window.getSelection) { window.getSelection().removeAllRanges(); }
+
                 return html2canvas(document.getElementById('milestones-widget'), {
                     backgroundColor: '#1b1a19',
                     scale: 2,
                     useCORS: true,
                     logging: false,
+                    onclone: function (clonedDoc) {
+                        // html2canvas can't render CSS gradient text (background-clip: text).
+                        // Apply a solid colour in the cloned capture only so the page is unchanged.
+                        clonedDoc.querySelectorAll('.mw-title span').forEach(function (el) {
+                            el.style.background           = 'none';
+                            el.style.webkitTextFillColor  = '#8b5cf6';
+                            el.style.color                = '#8b5cf6';
+                        });
+                    },
                 }).then(function (canvas) {
                     return canvasToBlob(canvas).then(function (blob) {
                         return blobToDataUrl(blob).then(function (dataUrl) {
