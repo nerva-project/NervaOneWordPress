@@ -30,7 +30,7 @@ function nerva_milestones_enqueue_assets() {
         'nerva-milestones',
         get_stylesheet_directory_uri() . '/inc/assets/css/milestones.css',
         [],
-        '1.0'
+        '1.2'
     );
 
     wp_enqueue_script(
@@ -45,7 +45,7 @@ function nerva_milestones_enqueue_assets() {
         'nerva-milestones',
         get_stylesheet_directory_uri() . '/inc/assets/js/milestones.js',
         [ 'html2canvas' ],
-        '1.0',
+        '1.2',
         true
     );
 
