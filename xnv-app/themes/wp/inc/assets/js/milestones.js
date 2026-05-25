@@ -41,7 +41,7 @@
         if (!usd) return '—';
         var n = parseFloat(usd);
         if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
-        if (n >= 1e6) return '$' + (n / 1e6).toFixed(3) + 'M';
+        if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
         return '$' + Math.round(n).toLocaleString('en-US');
     }
 
@@ -68,7 +68,8 @@
     function formatUpdated(isoString) {
         if (!isoString) return '';
         var d = new Date(isoString.replace(' ', 'T') + 'Z');
-        return 'Updated: ' + d.toLocaleTimeString('en-US', {
+        return 'Updated: ' + d.toLocaleString('en-US', {
+            month: 'short', day: 'numeric',
             hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short',
         });
     }
