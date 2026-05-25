@@ -36,8 +36,8 @@
 }
 
 .mw-logo {
-    width: 48px;
-    height: 48px;
+    width: 62px;
+    height: 62px;
     flex-shrink: 0;
 }
 
@@ -56,8 +56,15 @@
     background-clip: text;
 }
 
+.mw-tagline {
+    font-size: .72rem;
+    color: #aaa;
+    margin-top: 3px;
+    letter-spacing: .02em;
+}
+
 .mw-subtitle {
-    font-size: .75rem;
+    font-size: .72rem;
     color: #888;
     margin-top: 3px;
 }

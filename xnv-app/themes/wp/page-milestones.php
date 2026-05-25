@@ -13,10 +13,11 @@ get_header();
             <div id="milestones-widget">
 
                 <div class="mw-header">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/png-nerva-logo-white-256x256.png' ); ?>"
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/png-nerva-logo-256x256.png' ); ?>"
                          alt="Nerva" class="mw-logo">
                     <div class="mw-title-group">
                         <div class="mw-title">NERVA <span>Milestones</span></div>
+                        <div class="mw-tagline">Privacy coin · No pools · 1 CPU = 1 Vote</div>
                         <div class="mw-subtitle">
                             <span id="mw-age">Age: —</span>
                             &nbsp;·&nbsp;

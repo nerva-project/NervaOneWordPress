@@ -54,7 +54,7 @@ function nerva_milestones_enqueue_assets() {
         'apiBase' => rest_url( 'nerva/v1' ),
         'pageUrl' => get_permalink( $post->ID ),
         'nonce'   => wp_create_nonce( 'wp_rest' ),
-        'logoUrl' => get_template_directory_uri() . '/images/png-nerva-logo-white-256x256.png',
+        'logoUrl' => get_template_directory_uri() . '/images/png-nerva-logo-256x256.png',
     ] );
 }
 add_action( 'wp_enqueue_scripts', 'nerva_milestones_enqueue_assets' );
