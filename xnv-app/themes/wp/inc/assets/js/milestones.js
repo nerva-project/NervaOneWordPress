@@ -14,15 +14,14 @@
     //                       (coinId must match a key in NERVA_COMPARISON_COINS in PHP)
     // =========================================================================
     var GOALS = [
-        // { name: 'All Time High', target: 4466000, enabled: false }, // hit in 2019
-
+        { name: 'All Time High',           target:  4466000,  enabled: true  },
         { name: '$10M Market Cap',         target:  10000000, enabled: true  },
         { name: '$1 Per Coin',             type:    'supply', enabled: true  },
         { name: 'Little St. James ($60M)', target:  60000000, enabled: true  },
 
         // Comparison goals — target is the other coin's live market cap
-        { name: 'Zcash (ZEC) Market Cap',  coinId:  'zcash',  enabled: true  },
-        { name: 'Monero (XMR) Market Cap', coinId:  'monero', enabled: true  },
+        // { name: 'Zcash (ZEC) Market Cap',  coinId:  'zcash',  enabled: true  },
+        // { name: 'Monero (XMR) Market Cap', coinId:  'monero', enabled: true  },
     ];
     // =========================================================================
 
