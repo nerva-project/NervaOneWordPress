@@ -192,13 +192,28 @@
                     useCORS: true,
                     logging: false,
                     onclone: function (clonedDoc) {
-                        // html2canvas can't render CSS gradient text (background-clip: text).
-                        // Apply a solid colour in the cloned capture only so the page is unchanged.
-                        clonedDoc.querySelectorAll('.mw-title span').forEach(function (el) {
-                            el.style.background           = 'none';
-                            el.style.webkitTextFillColor  = '#8b5cf6';
-                            el.style.color                = '#8b5cf6';
-                        });
+                        // html2canvas can't clip backgrounds to text shapes, so we
+                        // simulate the gradient by colouring each character individually.
+                        var span = clonedDoc.querySelector('.mw-title span');
+                        if (!span) return;
+                        var text = span.textContent;
+                        var sR = 0x55, sG = 0xa8, sB = 0xbf; // #55a8bf
+                        var eR = 0x8b, eG = 0x5c, eB = 0xf6; // #8b5cf6
+                        span.style.background           = 'none';
+                        span.style.webkitBackgroundClip = 'border-box';
+                        span.style.backgroundClip       = 'border-box';
+                        span.style.webkitTextFillColor  = 'unset';
+                        span.innerHTML = '';
+                        for (var i = 0; i < text.length; i++) {
+                            var t  = text.length > 1 ? i / (text.length - 1) : 0;
+                            var ch = clonedDoc.createElement('span');
+                            ch.style.color = 'rgb(' +
+                                Math.round(sR + (eR - sR) * t) + ',' +
+                                Math.round(sG + (eG - sG) * t) + ',' +
+                                Math.round(sB + (eB - sB) * t) + ')';
+                            ch.textContent = text[i];
+                            span.appendChild(ch);
+                        }
                     },
                 }).then(function (canvas) {
                     return canvasToBlob(canvas).then(function (blob) {
