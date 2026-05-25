@@ -218,7 +218,8 @@
     min-width: 160px;
 }
 
-.mw-copy-btn {
+.mw-copy-btn,
+.mw-save-btn {
     min-width: 130px;
     margin-left: 16px;
 }

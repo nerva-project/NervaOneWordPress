@@ -17,7 +17,7 @@
         { name: 'All Time High',           target:  4466000,  enabled: true  },
         { name: '$10M Market Cap',         target:  10000000, enabled: true  },
         { name: '$1 Per Coin',             type:    'supply', enabled: true  },
-        { name: 'Little St. James ($60M)', target:  60000000, enabled: true  },
+        { name: 'Little St. James Island', target:  60000000, enabled: true  },
 
         // Comparison goals — target is the other coin's live market cap
         // { name: 'Zcash (ZEC) Market Cap',  coinId:  'zcash',  enabled: true  },
@@ -289,6 +289,30 @@
             });
     }
 
+    function saveImage() {
+        var btn = document.getElementById('mw-save-btn');
+        btn.disabled    = true;
+        btn.textContent = 'Saving…';
+
+        getScreenshotBlob()
+            .then(function (blob) {
+                var url = URL.createObjectURL(blob);
+                var a   = document.createElement('a');
+                a.href     = url;
+                a.download = 'nerva-milestones.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            })
+            .catch(function (err) {
+                console.error('Save error:', err);
+                alert('Could not save the image. Please try again.');
+            })
+            .finally(function () {
+                btn.disabled    = false;
+                btn.textContent = 'Save Image';
+            });
+    }
+
     // ── Init ─────────────────────────────────────────────────────────────
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -296,6 +320,7 @@
         var errorEl  = document.getElementById('mw-error');
         var shareBtn = document.getElementById('mw-share-btn');
         var copyBtn  = document.getElementById('mw-copy-btn');
+        var saveBtn  = document.getElementById('mw-save-btn');
 
         Promise.all([
             fetch(nervaMilestones.apiBase + '/milestones/latest').then(function (r) {
@@ -311,6 +336,7 @@
             loading.style.display      = 'none';
             shareBtn.style.display     = 'inline-block';
             copyBtn.style.display      = 'inline-block';
+            saveBtn.style.display      = 'inline-block';
             var instructions = document.getElementById('mw-share-instructions');
             instructions.innerHTML     =
                 'Click <strong>Share on X</strong> to post on X/Twitter, or <strong>Copy Image</strong> to copy the screenshot to your clipboard for sharing anywhere.';
@@ -324,5 +350,6 @@
 
         shareBtn.addEventListener('click', share);
         copyBtn.addEventListener('click', copyImage);
+        saveBtn.addEventListener('click', saveImage);
     });
 }());
