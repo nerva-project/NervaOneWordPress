@@ -13,7 +13,7 @@ get_header();
             <div id="milestones-widget">
 
                 <div class="mw-header">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/png-nerva-logo-256x256.png' ); ?>"
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/images/nerva-logo-200x200.png' ); ?>"
                          alt="Nerva" class="mw-logo">
                     <div class="mw-title-group">
                         <div class="mw-title">NERVA <span>Milestones</span></div>
