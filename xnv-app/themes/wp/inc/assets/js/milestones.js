@@ -170,14 +170,8 @@
         ]).then(function () { return true; }).catch(function () { return false; });
     }
 
-    function share() {
-        var btn          = document.getElementById('mw-share-btn');
-        var instructions = document.getElementById('mw-share-instructions');
-        btn.disabled     = true;
-        btn.textContent  = 'Generating…';
-        instructions.style.display = 'none';
-
-        fetch(nervaMilestones.apiBase + '/milestones/screenshot?snapshot_id=' + currentSnapshotId)
+    function getScreenshotBlob() {
+        return fetch(nervaMilestones.apiBase + '/milestones/screenshot?snapshot_id=' + currentSnapshotId)
             .then(function (r) { return r.json(); })
             .then(function (check) {
                 if (check.exists) {
@@ -215,7 +209,17 @@
                         });
                     });
                 });
-            })
+            });
+    }
+
+    function share() {
+        var btn          = document.getElementById('mw-share-btn');
+        var instructions = document.getElementById('mw-share-instructions');
+        btn.disabled     = true;
+        btn.textContent  = 'Generating…';
+        instructions.style.display = 'none';
+
+        getScreenshotBlob()
             .then(function (blob) {
                 return copyBlobToClipboard(blob).then(function (copied) {
                     var price = document.getElementById('mw-price').textContent;
@@ -254,12 +258,44 @@
             });
     }
 
+    function copyImage() {
+        var btn          = document.getElementById('mw-copy-btn');
+        var instructions = document.getElementById('mw-share-instructions');
+        btn.disabled     = true;
+        btn.textContent  = 'Copying…';
+        instructions.style.display = 'none';
+
+        getScreenshotBlob()
+            .then(function (blob) {
+                return copyBlobToClipboard(blob).then(function (copied) {
+                    if (copied) {
+                        instructions.innerHTML = '<strong>Screenshot copied to clipboard!</strong><br><br>' +
+                            'Paste with <strong>Ctrl+V</strong> (Windows) or <strong>⌘V</strong> (Mac) anywhere you want to share it.';
+                    } else {
+                        instructions.innerHTML =
+                            'Your browser does not support clipboard images.<br>' +
+                            '<a href="' + URL.createObjectURL(blob) + '" download="nerva-milestones.png">Download the screenshot</a> instead.';
+                    }
+                    instructions.style.display = 'block';
+                });
+            })
+            .catch(function (err) {
+                console.error('Copy error:', err);
+                alert('Could not copy the image. Please try again.');
+            })
+            .finally(function () {
+                btn.disabled  = false;
+                btn.textContent = 'Copy Image';
+            });
+    }
+
     // ── Init ─────────────────────────────────────────────────────────────
 
     document.addEventListener('DOMContentLoaded', function () {
         var loading  = document.getElementById('mw-loading');
         var errorEl  = document.getElementById('mw-error');
         var shareBtn = document.getElementById('mw-share-btn');
+        var copyBtn  = document.getElementById('mw-copy-btn');
 
         Promise.all([
             fetch(nervaMilestones.apiBase + '/milestones/latest').then(function (r) {
@@ -274,10 +310,10 @@
             populate(results[0], results[1]);
             loading.style.display      = 'none';
             shareBtn.style.display     = 'inline-block';
+            copyBtn.style.display      = 'inline-block';
             var instructions = document.getElementById('mw-share-instructions');
             instructions.innerHTML     =
-                'Click <strong>Share on X</strong>, then paste the screenshot into your tweet with ' +
-                '<strong>Ctrl+V</strong> (Windows) or <strong>⌘V</strong> (Mac).';
+                'Click <strong>Share on X</strong> to post on X/Twitter, or <strong>Copy Image</strong> to copy the screenshot to your clipboard for sharing anywhere.';
             instructions.style.display = 'block';
         })
         .catch(function (err) {
@@ -287,5 +323,6 @@
         });
 
         shareBtn.addEventListener('click', share);
+        copyBtn.addEventListener('click', copyImage);
     });
 }());

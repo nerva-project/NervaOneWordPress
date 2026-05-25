@@ -218,6 +218,11 @@
     min-width: 160px;
 }
 
+.mw-copy-btn {
+    min-width: 130px;
+    margin-left: 10px;
+}
+
 .mw-share-instructions {
     margin-top: 12px;
     font-size: .85rem;
