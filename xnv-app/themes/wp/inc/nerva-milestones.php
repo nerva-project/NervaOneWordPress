@@ -239,6 +239,14 @@ function nerva_milestones_get_latest( WP_REST_Request $request ) {
     $table = $wpdb->prefix . 'nerva_tracker_snapshots';
     $row   = $wpdb->get_row( "SELECT * FROM $table ORDER BY snapshot_time DESC LIMIT 1", ARRAY_A );
 
+    // Fetch fresh data if no snapshot exists or last one is older than 10 minutes
+    $age = $row ? ( current_time( 'timestamp' ) - strtotime( $row['snapshot_time'] ) ) : PHP_INT_MAX;
+    if ( $age > 900 ) {
+        nerva_milestones_fetch_coingecko();
+        nerva_milestones_fetch_comparison_coins();
+        $row = $wpdb->get_row( "SELECT * FROM $table ORDER BY snapshot_time DESC LIMIT 1", ARRAY_A );
+    }
+
     if ( ! $row ) {
         return new WP_Error( 'no_data', 'No snapshot data available yet.', [ 'status' => 404 ] );
     }
