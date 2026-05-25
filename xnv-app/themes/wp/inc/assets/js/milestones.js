@@ -69,7 +69,7 @@
         if (!isoString) return '';
         var d = new Date(isoString.replace(' ', 'T') + 'Z');
         return 'Updated: ' + d.toLocaleString('en-US', {
-            month: 'short', day: 'numeric',
+            month: 'short', day: 'numeric', year: 'numeric',
             hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short',
         });
     }
