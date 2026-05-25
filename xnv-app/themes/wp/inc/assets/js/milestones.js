@@ -33,7 +33,7 @@
         if (usd === null || usd === undefined) return '—';
         return '$' + parseFloat(usd).toLocaleString('en-US', {
             minimumFractionDigits: 4,
-            maximumFractionDigits: 6,
+            maximumFractionDigits: 4,
         });
     }
 
@@ -208,7 +208,7 @@
                     var mcap  = document.getElementById('mw-mcap').textContent;
                     var ch24  = document.getElementById('mw-24h').textContent;
                     var tweet =
-                        'Nerva $XNV progress update 🚀\n\n' +
+                        'Nerva $XNV progress update  🚀\n\n' +
                         'Price: ' + price + ' | Market Cap: ' + mcap + ' | 24h: ' + ch24 + '\n\n' +
                         '🔗 ' + nervaMilestones.pageUrl;
 
