@@ -459,3 +459,8 @@ class Nerva_Pinned_Posts_Widget extends WP_Widget {
 add_action('widgets_init', function() {
     register_widget('Nerva_Pinned_Posts_Widget');
 });
+
+/**
+ * Nerva Milestones Tracker
+ */
+require get_stylesheet_directory() . '/inc/nerva-milestones.php';
