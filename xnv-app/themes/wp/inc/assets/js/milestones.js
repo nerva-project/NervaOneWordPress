@@ -16,7 +16,7 @@
     var GOALS = [
         { name: 'All Time High',           target:  4466000,  enabled: true  },
         { name: '$10M Market Cap',         target:  10000000, enabled: true  },
-        { name: '$1 Per Coin',             type:    'supply', enabled: true  },
+        { name: '$1 Per $XNV',             type:    'supply', enabled: true  },
         { name: 'Little St. James Island', target:  60000000, enabled: true  },
 
         // Comparison goals — target is the other coin's live market cap
@@ -71,7 +71,7 @@
         var d = new Date(isoString.replace(' ', 'T') + 'Z');
         return 'Updated: ' + d.toLocaleString('en-US', {
             month: 'short', day: 'numeric', year: 'numeric',
-            hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short',
+            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'UTC', timeZoneName: 'short',
         });
     }
 
