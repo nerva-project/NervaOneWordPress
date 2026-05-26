@@ -438,7 +438,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Community Driven</h4>
-								<p>Nerva is an open-source project with no company, no roadmap handed down from above. What gets built next depends on what the community wants to build. If you have ideas, skills, or just the will to contribute — this project is yours to shape. The future of Nerva is unwritten, and that is intentional.</p>
+								<p>Nerva is an open-source project with no company, no roadmap handed down from above. What gets built next depends on what the community wants to build. If you have ideas, skills, or just the will to contribute, this project is yours to shape. The future of Nerva is unwritten, and that is intentional.</p>
 							</div>
 						</li>	
 						
@@ -458,7 +458,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Hard Fork 13</h4>
-								<p>Network upgrade including a redesigned mining algorithm with stronger GPU and ASIC resistance, keeping Nerva CPU-only and pool-resistant, as it has always been. Also included: daemon sync and wallet scan improvements for faster node setup and better wallet restore experience.</p>
+								<p>Network upgrade including a redesigned mining algorithm with stronger GPU and ASIC resistance, keeping Nerva CPU-only and pool-resistant, as it has always been. Also included: daemon sync improvements for faster node setup.</p>
 							</div>
 						</li>	
 						
@@ -469,7 +469,6 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Software Development</h4>
-								<p>Enhance Core Software and Services</p>
 								<p>Research and evaluate core software updates aligned with Nerva's long term goals. Begin development on new releases and continue improving existing Nerva services and infrastructure.</p>
 							</div>
 						</li>					
@@ -481,8 +480,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Community Growth</h4>
-								<p>Expand and Strengthen the Community</p>
-								<p>Launch a new Nerva subreddit and continue growing the broader community through engagement, education, and outreach initiatives.</p>
+								<p>Launched a new Nerva subreddit and continued growing the broader community through engagement, education, and outreach initiatives.</p>
 							</div>
 						</li>
 						
@@ -493,8 +491,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Exchange Expansion</h4>
-								<p>Pursue New Exchange Listings</p>
-								<p>Following the 2025 delistings from XeggeX and TradeOgre, prioritize securing new exchange listings to improve liquidity, accessibility, and market resilience.</p>
+								<p>Following the 2025 delistings from XeggeX and TradeOgre, Nerva secured new listings on NonKyc and several smaller exchanges, restoring liquidity and market accessibility.</p>
 							</div>
 						</li>
 						
@@ -538,8 +535,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Release NervaOne Mobile</h4>
-								<p>*** This was put on hold for now because growing our community was higher priority.</p>
-								<p>Develop, test and release working version of NervaOne Mobile before the end of 2024.</p>
+								<p>Develop, test and release a working version of NervaOne Mobile. Put on hold. Community growth was prioritized over mobile development at the time.</p>
 							</div>
 						</li>
 						

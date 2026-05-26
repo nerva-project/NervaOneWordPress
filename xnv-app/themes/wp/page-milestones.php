@@ -17,7 +17,7 @@ get_header();
                          alt="Nerva" class="mw-logo">
                     <div class="mw-title-group">
                         <div class="mw-title">NERVA <span>Milestones</span></div>
-                        <div class="mw-tagline">Privacy coin · No pools · 1 CPU = 1 Vote</div>
+                        <div class="mw-tagline">Crypto privacy · No pools · 1 CPU = 1 Vote</div>
                         <div class="mw-subtitle">
                             <span id="mw-age">Age: —</span>
                             &nbsp;·&nbsp;
