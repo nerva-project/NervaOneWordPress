@@ -45,7 +45,7 @@ function nerva_milestones_enqueue_assets() {
         'nerva-milestones',
         get_stylesheet_directory_uri() . '/inc/assets/js/milestones.js',
         [ 'html2canvas' ],
-        '1.2',
+        '1.3',
         true
     );
 

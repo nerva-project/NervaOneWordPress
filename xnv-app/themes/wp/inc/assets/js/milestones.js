@@ -165,9 +165,13 @@
         if (!navigator.clipboard || !window.ClipboardItem) {
             return Promise.resolve(false);
         }
-        return navigator.clipboard.write([
+        var writePromise = navigator.clipboard.write([
             new ClipboardItem({ 'image/png': blob })
         ]).then(function () { return true; }).catch(function () { return false; });
+        var timeout = new Promise(function (resolve) {
+            setTimeout(function () { resolve(false); }, 8000);
+        });
+        return Promise.race([writePromise, timeout]);
     }
 
     function getScreenshotBlob() {
