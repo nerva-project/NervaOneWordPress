@@ -13,14 +13,14 @@
                     <div>
                         <div class="spacer hidden-xs"></div>
                         <h1 class="page-intro">
-                            <b>NERVA (XNV)</b> is a privacy focused cryptocurrency built for secure transactions, private balances, and true financial fungibility.
-							Using proven Cryptonote privacy technology, NERVA obscures sender, receiver, and transaction amounts on chain.
-							This allows users to transact without exposing their financial history to the public.
+                            <b>NERVA (XNV)</b> is a privacy cryptocurrency where your transactions are completely private.
+							Sender, receiver, and amount are all hidden on the blockchain, so your financial history stays yours alone.
+							Built on proven Cryptonote technology, NERVA works like digital cash: spend it without leaving a trace.
                         </h1>
-						
+
                         <h1 class="page-intro">
-							NERVA is designed for long term decentralization through CPU only Proof of Work mining.
-							Its <b>Cryptonight Adaptive</b> algorithm helps resist ASIC and GPU dominated mining, keeping network participation accessible to everyday users.
+							NERVA uses CPU-only Proof of Work mining with no pool support. Each miner participates independently, which creates strong decentralization and makes the network censorship resistant.
+							Its <b>Cryptonight Adaptive</b> algorithm resists ASIC and GPU mining rigs, ensuring anyone with a regular computer can take part and help secure the network.
                         </h1>
 						<br>
 						
@@ -95,9 +95,8 @@
                             <div class="media">
                                 <span class="fa fa-code fa-2x gradient-fill mr-3"></span>
                                 <div class="media-body">
-                                    <h3 class="card-title">A new POW algorithm</h3>
-                                    <p class="card-text">NERVA utilizes exclusive Cryptonight Adaptive algorithm, 
-                                        with the aim of promoting decentralization and a preference for CPU miners.
+                                    <h3 class="card-title">Cryptonight Adaptive</h3>
+                                    <p class="card-text">NERVA's exclusive Cryptonight Adaptive algorithm resists ASIC and GPU mining. Combined with no pool support, every miner competes individually, keeping the network truly decentralized.
                                     </p>
                                 </div>
                             </div>
@@ -110,11 +109,8 @@
                             <div class="media">
                                 <span class="fa fa-dollar-sign fa-3x gradient-fill mr-3"></span>
                                 <div class="media-body">
-                                    <h3 class="card-title">No ICO</h3>
-                                    <p class="card-text">NERVA believes facing the issues in crypto are far more
-                                        important than the personal wealth of individuals.
-                                        There was no ICO, just a fair launch for those who want to help provide a
-                                        brighter future for crypto.
+                                    <h3 class="card-title">Fair Launch</h3>
+                                    <p class="card-text">NERVA launched with no ICO and no investor allocation. A 1% premine went to the project's creator, who left in 2021. All other coins have been earned through mining.
                                     </p>
                                 </div>
                             </div>
@@ -128,8 +124,7 @@
                                 <span class="far fa-lightbulb fa-3x gradient-fill mr-3"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Energy efficient</h3>
-                                    <p class="card-text">No need to run separate GPU mining rigs or other specialized hardware. 
-                                        Mine coins on your current computer with no additional software.
+                                    <p class="card-text">No need for expensive GPU rigs or specialized hardware. Mine on your existing computer using resources you already have.
                                     </p>
                                 </div>
                             </div>
@@ -163,10 +158,8 @@
                             <div class="media">
                                 <span class="fa fa-lock fa-3x gradient-fill mr-3"></span>
                                 <div class="media-body">
-                                    <h3 class="card-title">Secure</h3>
-                                    <p class="card-text">Based on Monero, NERVA combines cryptonote's
-                                        privacy and fungibility with an emphasis towards decentralization.
-                                        Transactions remain anonymous and keep their histories hidden.
+                                    <h3 class="card-title">Private by Default</h3>
+                                    <p class="card-text">Every NERVA transaction hides the sender, receiver, and amount on the blockchain by default. Your financial activity is private without any extra steps.
                                     </p>
                                 </div>
                             </div>
@@ -180,7 +173,7 @@
                                 <span class="far fa-thumbs-up fa-3x gradient-fill mr-3"></span>
                                 <div class="media-body">
                                     <h3 class="card-title">Fair distribution</h3>
-                                    <p class="card-text">An emphasis on CPU mining and no additional mining software means anyone can get involved quickly and easily.</p>
+                                    <p class="card-text">With CPU-only mining and no pool support, no single entity can dominate the network. Every miner participates on equal footing, making NERVA one of the most fairly distributed cryptocurrencies.</p>
                                 </div>
                             </div>
                         </div>
@@ -210,11 +203,9 @@
                                 <h3 class="css-h3-title">
                                     <div class="circle-icon mr-4 float-left">1</div>Crypto for everyone
                                 </h3>
-                                <p> Crypto should be for everyone, not just those who can afford the hardware to mine
-                                    it.
-                                    NERVA allows you to mine on standard desktop computers, without elaborate hardware or software configurations.
-                                    Because if crypto is going to be our future, then we all need to be able to be a
-                                    part of it.
+                                <p> Crypto should be accessible to everyone, not just those who can afford specialized hardware.
+                                    NERVA lets you mine on any standard computer, no elaborate setup required.
+                                    True decentralization means anyone can participate.
                                     <span class="mb-0">
                                         <span class="a-color collapsed cursor-pointer" type="" data-toggle="collapse"
                                             data-target="#collapseOne" aria-expanded="false"
@@ -228,19 +219,11 @@
                         <div class="accordion" id="accordion">
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                                 data-parent="#accordion">
-                                <p> We are following up on this mission. We are actively working every day to produce
-                                    software that is easy to use for everyone.
-                                    We have API's in .NET and PHP to allow other developers to integrate NERVA into
-                                    their web and software projects. We also decided
-                                    to start work on our own GUI (currently in Beta) to build these ideals of simplicity
-                                    and ease of use into a lean, tidy cross platform package.</p>
-                                <p> NERVA also enjoys a substantial following on Discord. So there
-                                    is always someone available to chat to or get help from.
-                                    Community is a big part of NERVA. This is truly a community focused and driven coin.
-                                    Where every miner, trader or hodler is treated equally.
-                                    The NERVA community all share a common ideal. To take crypto back from big
-                                    corporations and organised mining operations and give it back to the people.
-                                    The way crypto was designed and the way it was intended.</p>
+                                <p> We back this up with actively maintained software. A PHP API lets developers integrate NERVA into their projects.
+                                    NervaOne, our open-source desktop wallet and miner, makes it easy to get started on Windows, Linux, and Mac.</p>
+                                <p> The NERVA community is active on Discord and Telegram, with people always around to help.
+                                    This is a community-driven project where every miner, trader, and holder is treated equally,
+                                    working together to keep crypto decentralized and in the hands of individuals.</p>
                                 <div class="spacer"></div>
                             </div>
                         </div>
@@ -250,12 +233,9 @@
                                 <h3 class="css-h3-title">
                                     <div class="circle-icon mr-4 float-left">2</div>On the cutting edge
                                 </h3>
-                                <p> NERVA is widely known as an experimental coin. But that's just cause we're doing
-                                    things a bit differently.
-                                    With a custom Proof of Work algorithm, the focus on solo CPU mining and the
-                                    accelerated emission curve, NERVA
-                                    is changing the way people think about cryptocurrencies and how they are mined and
-                                    traded.
+                                <p> NERVA takes a different approach to cryptocurrency.
+                                    With a custom Proof of Work algorithm, solo CPU-only mining, and a fixed emission curve,
+                                    NERVA challenges conventional thinking about how blockchains are mined and secured.
                                     <span class="mb-0">
                                         <span class="a-color collapsed cursor-pointer" type="" data-toggle="collapse"
                                             data-target="#collapsetwo" aria-expanded="false"
@@ -269,34 +249,14 @@
                         <div class="accordion" id="accordion">
                             <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"
                                 data-parent="#accordion">
-                                <p> As well as being a solid coin that is easy to mine on any old computer, NERVA is
-                                    also engaged in some more experimental aspects of crypto.
-                                    NERVA was the first coin to demonstrate a self adjusting algorithm by changing some
-                                    algorithm parameters every block. Now Cryptonight
-                                    Adaptive is in v5 and every single hash relies on different, randomly selected data
-                                    from the blockchain. This reliance on blockchain data improves resistance of the network,
-                                    to ASIC and FPGA attack.
-                                    The algorithms reliance on stored blockchain data also put NERVA at the forefront
-                                    of resistance to rented hash services like NiceHash and Mining Rig Rentals, which
-                                    also makes NERVA the best available coin for resisting 51% attacks
-                                    that have compromised the integrity of many blockchains before. NERVA is a coin you
-                                    can have total confidence in as a method of payment and as store of wealth in the
-                                    short or long term.</p>
-                                <p> The other talking point of NERVA is the rapid coin emission, with all coins due to
-                                    be emitted within 3 years of the genesis block. But why? Monero and it's fork coins
-                                    (of which NERVA is one)
-                                    rely on the principle of the 'tail emission' after the last of the coins are
-                                    emitted. A flat block reward that is aimed to replace lost coins and keep miners
-                                    incentivised. But does it work?
-                                    Well no one actually knows. No Cryptonight POW blockchain has come to the end of its
-                                    work. NERVA is going to do that before any other. NERVA will be the project that
-                                    other
-                                    projects look to for answers and an example of how to manage that transition. So by
-                                    being a part of NERVA, you are getting into a project that will have the world's
-                                    attention on it in a couple of years.</p>
-                                <p> Overall, NERVA defies the conventional wisdom of crypto and challenges people to
-                                    think differently about how cryptocurrency is mined and traded and how blockchains
-                                    are secured now and into the future.</p>
+                                <p> NERVA was the first cryptocurrency to demonstrate a self-adjusting mining algorithm, changing parameters every block.
+                                    Cryptonight Adaptive is now in v12, with v13 in development. Every hash relies on randomly selected blockchain data,
+                                    making the network highly resistant to ASICs, FPGAs, and rented hash services like NiceHash,
+                                    providing strong protection against 51% attacks that have compromised other blockchains.</p>
+                                <p> NERVA also completed a milestone no other Cryptonight blockchain had reached: the end of primary coin emission.
+                                    After approximately three years, the network entered tail emission, a small steady block reward designed to
+                                    replace lost coins and keep miners incentivized. NERVA proved this transition works, providing a real-world
+                                    example for other projects to learn from.</p>
                                 <div class="spacer"></div>
                             </div>
                         </div>
@@ -323,23 +283,10 @@
                         <div class="accordion" id="accordion">
                             <div id="collapsethree" class="collapse" aria-labelledby="headingthree"
                                 data-parent="#accordion">
-                                <p> One person, or even one community as passionate as ours can't really change the
-                                    world. But we can take the first steps.
-                                    We provide tools and assistance to anyone who wants to help us revolutionise the way
-                                    people shop online and the currency they use to pay for goods and services.
-                                    Our WooCommerce plugin allows you to accept NERVA on your ecommerce site, just like
-                                    PayPal or credit cards. Our API's allow you to integrate NERVA
-                                    into your next ecommerce or analytics site. Maybe you'd like to make a new online
-                                    game and use NERVA as an in game currency. The possibilities are endless.
-                                    And when you base your next development on NERVA, or accept it as payment on your
-                                    store, you're basing it on a fast paced, extremely decentralized and stable
-                                    blockchain.</p>
-                                <p> But what about if you're not a developer? Don't worry, we've got you covered. We
-                                    have very active development on multiple fronts,
-                                    creating more and more ways for you to trade and use NERVA. We are actively seeking
-                                    additional exchanges to list on to expand your
-                                    choices for buying and selling NERVA and actively working on bringing you great ways
-                                    to spend those coins you mine and buy.</p>
+                                <p> NERVA provides APIs and developer tools for anyone who wants to build with it,
+                                    whether that's integrating payments, building applications, or using NERVA as an in-game currency.</p>
+                                <p> For non-developers, NervaOne makes it easy to store, send, and mine NERVA on any computer.
+                                    We continue working to expand exchange listings and make NERVA easier to buy, sell, and use.</p>
                                 <div class="spacer"></div>
                             </div>
                         </div>
@@ -387,11 +334,11 @@
 				<div class="spacer"></div>
 				<h2>Node Map</h2>
 				<p>
-					Nerva is decentralized due to its pool resistance and CPU-only mining.
+					Nerva is decentralized through CPU-only mining and no pool support.
                     <br />
-                    It is extremely resistant to 51% attacks because each miner operates full node.
+                    Every miner operates a full node, making the network extremely resistant to 51% attacks.
 					<br />
-					1 CPU = 1 VOTE as Satoshi mentioned in his whitepaper.
+					1 CPU = 1 Vote, as described in the Bitcoin whitepaper.
 				</p>
 			</div>
 			<div class="row">			
