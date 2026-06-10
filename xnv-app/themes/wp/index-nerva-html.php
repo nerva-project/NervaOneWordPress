@@ -911,13 +911,13 @@
                                     <p class="card-text">Apps for Linux</p>
                                     <p class="text-center">
                                         <small>For New Users</small>
-										<a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_ARM64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>
-                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (X64)&nbsp&nbsp&nbsp</a>
+										<a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (X64)&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_GUI_LINK_ARM64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>
                                     </p>
                                     <p class="text-center">
                                         <small>For Advanced Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (ARMV8)</a>
-										<a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X64)</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (X64)</a>
+										<a class="btn btn-block btn-primary" href="<?php echo LINUX_CLI_LINK_ARM; ?>"><span class="fa fa-download"></span> &nbsp; Command Line (ARMV8)</a>
                                     </p>
                                     
                                 </div>
@@ -936,7 +936,8 @@
                                     <p class="card-text">Apps for Windows</p>
                                     <p class="text-center">
                                         <small>For New Users</small>
-                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_GUI_LINK; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One Desktop&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_GUI_LINK_X64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (X64)&nbsp&nbsp&nbsp</a>
+                                        <a class="btn btn-block btn-primary" href="<?php echo WINDOWS_GUI_LINK_ARM64; ?>"><span class="fa fa-download"></span> &nbsp; Nerva One (ARM)&nbsp&nbsp&nbsp</a>                                        
                                     </p>
                                     <p class="text-center">
                                         <small>For Advanced Users</small>
