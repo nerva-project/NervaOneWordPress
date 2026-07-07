@@ -1,7 +1,7 @@
 <?php 
 define('CLI_VERSION', 'v0.3.0.0');
 define('CLI_CODENAME', 'Legacy Remade');
-define('GUI_VERSION', 'v1.2.0');
+define('GUI_VERSION', 'v1.3.0');
 define('GUI_CODENAME', 'NervaOne');
 define('LEDGER_VERSION', 'v0.1.7.0+');
 
@@ -13,13 +13,13 @@ define('MAC_CLI_LINK_X64', 'https://github.com/nerva-project/nerva/releases/down
 define('MAC_CLI_LINK_ARM', 'https://github.com/nerva-project/nerva/releases/download/v0.3.0.0/nerva-macos-armv8-v0.3.0.0.tar.bz2');
 define('ANDROID_CLI_LINK_ARM', 'https://github.com/nerva-project/nerva/releases/download/v0.3.0.0/nerva-android-armv8-v0.3.0.0.tar.bz2');
 
-define('LINUX_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-linux-x64.zip');
-define('LINUX_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-linux-arm64.zip');
-define('WINDOWS_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-win-x64.zip');
-define('WINDOWS_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-win-arm64.zip');
-define('MAC_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-macos-x64.zip');
-define('MAC_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-macos-arm64.zip');
-define('ANDROID_GUI_LINK_ARM', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.2.0/nervaone-v1.2.0-android-arm64.zip');
+define('LINUX_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-linux-x64.zip');
+define('LINUX_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-linux-arm64.zip');
+define('WINDOWS_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-win-x64.zip');
+define('WINDOWS_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-win-arm64.zip');
+define('MAC_GUI_LINK_X64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-macos-x64.zip');
+define('MAC_GUI_LINK_ARM64', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-macos-arm64.zip');
+define('ANDROID_GUI_LINK_ARM', 'https://github.com/nerva-project/NervaOneWalletMiner/releases/download/v1.3.0/nervaone-v1.3.0-android-arm64.zip');
 
 define('LEDGER_LINK', 'https://nerva.one/#');
 define('QUICKSYNC_LINK', 'https://nerva.one/quicksync/quicksync.raw');
