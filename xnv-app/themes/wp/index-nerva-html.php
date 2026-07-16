@@ -1,3 +1,39 @@
+<!-- HF13 Notice - Comment out after block 4320000 -->
+<div id="hf13-notice" style="display:none; background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%); color:#fff; padding:12px 20px; text-align:center; position:relative; z-index:9999;">
+    <strong>Hard Fork 13 incoming!</strong>
+    Activates at block <strong>4,320,000</strong> &mdash;
+    <span id="hf13-remaining">calculating...</span>
+    &mdash; <a href="https://nerva.one/nerva-v0-3-0-0-legacy-remade-our-first-hard-fork-in-years-is-here/" style="color:#fff; text-decoration:underline;" target="_blank">Read more &rarr;</a>
+    <button onclick="document.getElementById('hf13-notice').style.display='none'; localStorage.setItem('hf13-dismissed','1');"
+        style="position:absolute; right:15px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:#fff; font-size:20px; line-height:1; cursor:pointer;" aria-label="Dismiss">&times;</button>
+</div>
+<script>
+(function() {
+    var HF_BLOCK = 4320000;
+    if (localStorage.getItem('hf13-dismissed') === '1') return;
+    function updateHF13() {
+        fetch('https://api.nerva.one/daemon/get_info/')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var height = data.height || 0;
+                var remaining = HF_BLOCK - height;
+                if (remaining <= 0) return;
+                var hours = Math.round(remaining * 60 / 3600);
+                document.getElementById('hf13-remaining').innerText =
+                    remaining.toLocaleString('en-US') + ' blocks (~' + hours + ' hours)';
+                document.getElementById('hf13-notice').style.display = 'block';
+            })
+            .catch(function() {
+                document.getElementById('hf13-remaining').innerText = 'coming soon';
+                document.getElementById('hf13-notice').style.display = 'block';
+            });
+    }
+    updateHF13();
+    setInterval(updateHF13, 60000);
+})();
+</script>
+<!-- HF13 Notice End -->
+
 <div data-spy="scroll" data-target="#navbar" data-offset="30">
 
 <!-- Home Begins -->
