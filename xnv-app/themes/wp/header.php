@@ -70,6 +70,58 @@
     
 	<?php // if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 	
+		<!-- HF13 Notice - Comment out after block 4320000 -->
+		<div id="hf13-notice" style="display:none; position:fixed; top:0; left:0; right:0; background:linear-gradient(135deg,#6e45e2 0%,#88d3ce 100%); color:#fff; padding:10px 50px 10px 20px; text-align:center; z-index:10000; font-size:15px; line-height:1.4;">
+			<strong>Hard Fork 13 incoming!</strong>
+			Activates at block <strong>4,320,000</strong> &mdash;
+			<span id="hf13-remaining">calculating...</span> remaining &mdash;
+			<a href="https://nerva.one/nerva-v0-3-0-0-legacy-remade-our-first-hard-fork-in-years-is-here/" style="color:#fff; text-decoration:underline;" target="_blank">Read more &rarr;</a>
+			<button id="hf13-close" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:#fff; font-size:22px; line-height:1; cursor:pointer;" aria-label="Dismiss">&times;</button>
+		</div>
+		<script>
+		(function() {
+			var HF_BLOCK = 4320000;
+
+			function adjustNav(show) {
+				var masthead = document.getElementById('masthead');
+				if (!masthead) return;
+				masthead.style.top = show ? document.getElementById('hf13-notice').offsetHeight + 'px' : '0';
+			}
+
+			document.getElementById('hf13-close').addEventListener('click', function() {
+				document.getElementById('hf13-notice').style.display = 'none';
+				adjustNav(false);
+			});
+
+			function updateHF13() {
+				fetch('https://api.nerva.one/daemon/explorer/index.php?endpoint=get_info')
+					.then(function(r) { return r.json(); })
+					.then(function(data) {
+						var height = data.height || 0;
+						var remaining = HF_BLOCK - height;
+						if (remaining <= 0) return;
+						var totalHours = Math.floor(remaining * 60 / 3600);
+						var days = Math.floor(totalHours / 24);
+						var hrs = totalHours % 24;
+						var timeStr = days > 0 ? '~' + days + 'd ' + hrs + 'h' : '~' + hrs + 'h';
+						document.getElementById('hf13-remaining').innerText =
+							remaining.toLocaleString('en-US') + ' blocks (' + timeStr + ')';
+						document.getElementById('hf13-notice').style.display = 'block';
+						setTimeout(function() { adjustNav(true); }, 0);
+					})
+					.catch(function() {
+						document.getElementById('hf13-remaining').innerText = 'a few';
+						document.getElementById('hf13-notice').style.display = 'block';
+						setTimeout(function() { adjustNav(true); }, 0);
+					});
+			}
+
+			updateHF13();
+			setInterval(updateHF13, 60000);
+		})();
+		</script>
+		<!-- HF13 Notice End -->
+
 		<header id="masthead" class="site-header nav-menu fixed-top <?php echo wp_bootstrap_starter_bg_class(); ?>" role="banner">
 			<div class="container">
 				<nav class="navbar navbar-dark navbar-expand-xl">
