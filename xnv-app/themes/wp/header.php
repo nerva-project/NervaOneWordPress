@@ -70,7 +70,7 @@
     
 	<?php // if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 	
-		<!-- HF13 Notice - Comment out after block 4320000 -->
+		<?php /* HF Notice - Uncomment to activate
 		<div id="hf13-notice" style="display:none; position:fixed; top:0; left:0; right:0; background:linear-gradient(135deg,#6e45e2 0%,#88d3ce 100%); color:#fff; padding:10px 50px 10px 20px; text-align:center; z-index:10000; font-size:15px; line-height:1.4;">
 			<strong>Hard Fork 13 incoming!</strong>
 			Activates at block <strong>4,320,000</strong> &mdash;
@@ -120,7 +120,7 @@
 			setInterval(updateHF13, 60000);
 		})();
 		</script>
-		<!-- HF13 Notice End -->
+		*/ ?>
 
 		<header id="masthead" class="site-header nav-menu fixed-top <?php echo wp_bootstrap_starter_bg_class(); ?>" role="banner">
 			<div class="container">
