@@ -2163,6 +2163,9 @@ header {
   background: #f59e0b;
   color: #e8e8e8;
 }
+:root.dark-mode .badge-active {
+  color: #2a2a2a;
+}
 .badge-upcoming {
   background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
   color: #fff;

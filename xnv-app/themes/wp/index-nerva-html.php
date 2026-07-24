@@ -405,7 +405,7 @@
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
 								<h4 class="timeline-title">Hard Fork 14 <span class="timeline-badge badge-active">In Development</span></h4>
-								<p>Nerva's next planned network upgrade, currently in active development. Focused on three improvements: stronger transaction privacy through a larger anonymity set per transaction; smaller and faster-to-verify transactions using more efficient cryptographic signatures and proofs; and a new mining algorithm that ties performance to memory speed rather than raw processor speed, keeping mining fair and accessible on ordinary consumer hardware. Activation block and date to be announced.</p>
+								<p>Nerva's next planned network upgrade, currently in active development. Three key improvements: stronger transaction privacy through a larger anonymity set; smaller and faster-to-verify transactions via more efficient cryptographic signatures and proofs; and a new mining algorithm that further deepens the memory-bound approach introduced in HF13, keeping mining fair and ASIC/GPU resistant, upholding Nerva's one CPU, one vote principle.</p>
 							</div>
 						</li>
 
