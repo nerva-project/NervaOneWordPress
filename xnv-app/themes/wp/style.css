@@ -2121,6 +2121,52 @@ header {
 .marker-outline .timeline-item:hover .timeline-marker:before {
   background: #FF6B6B;
 }
+/*----------------------------------------------
+	MOD: MARKER DONE (green)
+----------------------------------------------*/
+.marker-done .timeline-marker:before {
+  background: #3dba6f;
+  border-color: #3dba6f;
+}
+.marker-done:not(.period):hover .timeline-marker:before {
+  background: #2ea85f;
+  border-color: #2ea85f;
+}
+/*----------------------------------------------
+	MOD: MARKER ACTIVE (amber - in development)
+----------------------------------------------*/
+.marker-active .timeline-marker:before {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+.marker-active:not(.period):hover .timeline-marker:before {
+  background: #d97706;
+  border-color: #d97706;
+}
+/*----------------------------------------------
+	TIMELINE STATUS BADGES
+----------------------------------------------*/
+.timeline-badge {
+  font-size: 0.62em;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin-left: 7px;
+  letter-spacing: 0.02em;
+}
+.badge-done {
+  background: #3dba6f;
+  color: #fff;
+}
+.badge-active {
+  background: #f59e0b;
+  color: #000;
+}
+.badge-upcoming {
+  background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
+  color: #fff;
+}
 .time-bottom {
 	color: var(--clr-text-muted);
 	font-size: 70%;

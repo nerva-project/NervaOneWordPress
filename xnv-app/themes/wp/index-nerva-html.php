@@ -398,18 +398,29 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-active">
+							<div class="timeline-info">
+								<span>Q4 / 2026</span>
+							</div>
+							<div class="timeline-marker"></div>
+							<div class="timeline-content">
+								<h4 class="timeline-title">Hard Fork 14 <span class="timeline-badge badge-active">In Development</span></h4>
+								<p>Nerva's next planned network upgrade, currently in active development. Focused on three improvements: stronger transaction privacy through a larger anonymity set per transaction; smaller and faster-to-verify transactions using more efficient cryptographic signatures and proofs; and a new mining algorithm that ties performance to memory speed rather than raw processor speed, keeping mining fair and accessible on ordinary consumer hardware. Activation block and date to be announced.</p>
+							</div>
+						</li>
+
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q3 / 2026</span>
 							</div>
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
-								<h4 class="timeline-title">Hard Fork 13</h4>
+								<h4 class="timeline-title">Hard Fork 13 <span class="timeline-badge badge-done">Completed</span></h4>
 								<p>Network upgrade including a redesigned mining algorithm with stronger GPU and ASIC resistance, keeping Nerva CPU-only and pool-resistant, as it has always been. Also included: daemon sync improvements for faster node setup.</p>
 							</div>
-						</li>	
-						
-						<li class="timeline-item">
+						</li>
+
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q2 / 2026</span>
 							</div>
@@ -418,26 +429,26 @@
 								<h4 class="timeline-title">Software Development</h4>
 								<p>Research and evaluate core software updates aligned with Nerva's long term goals. Begin development on new releases and continue improving existing Nerva services and infrastructure.</p>
 							</div>
-						</li>					
-						
-						<li class="timeline-item">
+						</li>
+
+						<li class="timeline-item marker-active">
 							<div class="timeline-info">
 								<span>Q1 / 2026</span>
 							</div>
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
-								<h4 class="timeline-title">Community Growth</h4>
+								<h4 class="timeline-title">Community Growth <span class="timeline-badge badge-active">Ongoing</span></h4>
 								<p>Launched a new Nerva subreddit and continued growing the broader community through engagement, education, and outreach initiatives.</p>
 							</div>
 						</li>
-						
-						<li class="timeline-item">
+
+						<li class="timeline-item marker-active">
 							<div class="timeline-info">
 								<span>Q1 / 2026</span>
 							</div>
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
-								<h4 class="timeline-title">Exchange Expansion</h4>
+								<h4 class="timeline-title">Exchange Expansion <span class="timeline-badge badge-active">Ongoing</span></h4>
 								<p>Following the 2025 delistings from XeggeX and TradeOgre, Nerva secured new listings on NonKyc and several smaller exchanges, restoring liquidity and market accessibility.</p>
 							</div>
 						</li>
@@ -454,7 +465,7 @@
 						
 
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q1 / 2025</span>
 							</div>
@@ -475,7 +486,7 @@
 							</div>
 						</li>					
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2024</span>
 							</div>
@@ -486,7 +497,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q3 / 2024</span>
 							</div>
@@ -498,7 +509,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q2 / 2024</span>
 							</div>
@@ -510,7 +521,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q2 / 2024</span>
 							</div>
@@ -521,7 +532,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q1 / 2024</span>
 							</div>
@@ -544,7 +555,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2023</span>
 							</div>
@@ -555,7 +566,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2023</span>
 							</div>
@@ -566,7 +577,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q2 / 2023</span>
 							</div>
@@ -585,7 +596,7 @@
 								<h3 class="timeline-title">2022</h3>
 							</div>
 						</li>
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q1 / 2022</span>
 							</div>
@@ -604,7 +615,7 @@
 							</div>
 						</li>
 						
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2021</span>
 							</div>
@@ -614,7 +625,7 @@
 								<p>Continue the XNV Treasury buyback via Tradeogre. 100100 Coins are currently in the Treasury Wallet.</p>
 							</div>
 						</li>
-                        <li class="timeline-item">
+                        <li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2021</span>
 							</div>
@@ -624,7 +635,7 @@
 								<p>Set up Nerva services on nerva.one domain, release new version of Nerva software and update outside links.</p>
 							</div>
 						</li>
-						<li class="timeline-item">
+						<li class="timeline-item marker-done">
 							<div class="timeline-info">
 								<span>Q4 / 2021</span>
 							</div>
