@@ -426,7 +426,7 @@
 							</div>
 							<div class="timeline-marker"></div>
 							<div class="timeline-content">
-								<h4 class="timeline-title">Software Development</h4>
+								<h4 class="timeline-title">Software Development <span class="timeline-badge badge-done">Completed</span></h4>
 								<p>Research and evaluate core software updates aligned with Nerva's long term goals. Begin development on new releases and continue improving existing Nerva services and infrastructure.</p>
 							</div>
 						</li>

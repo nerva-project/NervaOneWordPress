@@ -2161,7 +2161,7 @@ header {
 }
 .badge-active {
   background: #f59e0b;
-  color: #000;
+  color: #e8e8e8;
 }
 .badge-upcoming {
   background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
