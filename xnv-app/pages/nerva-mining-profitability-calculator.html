@@ -3,14 +3,14 @@
 <div class="xnv-calcwrap">
 	<div class="xnv-calc">
 
-		<div class="xnv-entry">			
-		<label for="ownHashrate">Your total hashrate (kH/s):</label>
-		<input type="number" id="ownHashrate" placeholder="Your Hashrate" ,="" value="7"><br>
+		<div class="xnv-entry">
+		<label for="ownHashrate">Your total hashrate (H/s):</label>
+		<input type="number" id="ownHashrate" placeholder="Your Hashrate" ,="" value="200"><br>
 		</div>
-		
+
 		<div class="xnv-entry">
 		<label for="totalHashrate">Total network hashrate (kH/s):</label>
-		<input type="number" id="totalHashrate" placeholder="Total Hashrate" value="160"><br>
+		<input type="number" id="totalHashrate" placeholder="Total Hashrate" value="50"><br>
 		</div>
 		
 		<div id="xnv-hicb" class="xnv-entry">
@@ -48,7 +48,28 @@
 </div>
 
 <div>
-<h3>Sample NERVA CPU Mining Benchmarks</h3>
+<h4>Sample NERVA CPU Mining Benchmarks (Current CryptoNight-Adaptive Algorithm &mdash; v7, Post HF13)</h4>
+<table class="xnv-bench">
+      <thead>
+        <tr>
+          <th>CPU</th>
+          <th>H/s</th>
+          <th>Threads (optimal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AMD Ryzen 9 9800X3D</td><td>730</td><td>8</td></tr>
+        <tr><td>AMD Ryzen 9 7950X</td><td>550</td><td>12</td></tr>
+        <tr><td>Intel Core i9-13900K</td><td>400</td><td>30</td></tr>
+        <tr><td>Intel Core i7-6700</td><td>80</td><td>4</td></tr>
+        <tr><td>Google Tensor G2 (Pixel 7a)</td><td>22</td><td>1</td></tr>
+      </tbody>
+    </table>
+</div>
+
+<div>
+<h4>Sample NERVA CPU Mining Benchmarks (Legacy CryptoNight-Adaptive Algorithm &mdash; v6, Pre HF13)</h4>
+<p><em>These benchmarks were recorded on Nerva's v6 mining algorithm, used prior to Hard Fork 13. Hashrates on the current algorithm are approximately 90% lower.</em></p>
 <table class="xnv-bench">
       <thead>
         <tr>
@@ -145,7 +166,7 @@ function calculateProfitForHashrate(hashrate) {
     const nervaPrice = parseFloat(document.getElementById('nervaPrice').value) || 0;
     const totalHashrate = parseFloat(document.getElementById('totalHashrate').value) || 0;
 
-    const avgWattagePerKH = userPowerConsumption / userHashrate || 0;
+    const avgWattagePerKH = userPowerConsumption / (userHashrate / 1000) || 0; // userHashrate in H/s, convert to kH/s
     const estimatedPowerConsumption = avgWattagePerKH * hashrate;
     const kWh = estimatedPowerConsumption / 1000;
 
@@ -211,8 +232,9 @@ function calculateProfit() {
     const nervaPrice = parseFloat(document.getElementById('nervaPrice').value) || 0;
 
     const kWh = powerConsumption / 1000;
+    const ownHashrateKH = ownHashrate / 1000; // convert H/s to kH/s to match network hashrate units
 
-    let shareOfNetwork = isHashrateIncluded ? ownHashrate / totalHashrate : ownHashrate / (totalHashrate + ownHashrate);
+    let shareOfNetwork = isHashrateIncluded ? ownHashrateKH / totalHashrate : ownHashrateKH / (totalHashrate + ownHashrateKH);
 
     const nervaPerDay = NERVA_PER_MINUTE * MINUTES_PER_DAY * shareOfNetwork;
     const nervaPerWeek = nervaPerDay * 7;
