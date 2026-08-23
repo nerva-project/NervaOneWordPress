@@ -1,0 +1,41 @@
+# WordPress core. Managed by WordPress's own updater, not by this repo.
+# Tracking it means every auto-update shows up as local drift on the server.
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/readme.html
+/license.txt
+
+# Configuration. Holds credentials and differs per environment.
+/wp-config.php
+/wp-config-original.php
+
+# Third-party plugins and stock themes. WordPress updates these itself.
+/xnv-app/plugins/
+/xnv-app/themes/index.php
+/xnv-app/themes/twentytwenty*/
+
+# Runtime state that only exists on the server.
+/xnv-app/uploads/
+/xnv-app/cache/
+/xnv-app/upgrade/
+/xnv-app/upgrade-temp-backup/
+/xnv-app/htaccess-editor-backups/
+/xnv-app/advanced-cache.php
+/xnv-app/autoptimize_404_handler.php
+/xnv-app/autoptimize/
+/xnv-app/index.php
+
+# Server-side directories not part of the site source.
+/assets/
+/content/testing/
+/database/
+/quicksync/
+/testnet/
+/backup/
+
+# Never commit a checkout's own credentials.
+.git-credentials
+*.log
