@@ -293,7 +293,17 @@ function nerva_milestones_check_screenshot( WP_REST_Request $request ) {
 }
 
 
+// Largest screenshot we will accept, before base64 encoding. The widget renders
+// to roughly 150 KB, so this is generous.
+define( 'NERVA_MILESTONES_MAX_IMAGE_BYTES', 1048576 );
+
+// One save per IP per minute. The page only ever writes once per snapshot.
+define( 'NERVA_MILESTONES_SAVE_INTERVAL', 60 );
+
+
 function nerva_milestones_save_screenshot( WP_REST_Request $request ) {
+    global $wpdb;
+
     $snapshot_id = absint( $request->get_param( 'snapshot_id' ) );
     $image_data  = $request->get_param( 'image' );
 
@@ -305,6 +315,28 @@ function nerva_milestones_save_screenshot( WP_REST_Request $request ) {
         return new WP_Error( 'no_image', 'No image data provided.', [ 'status' => 400 ] );
     }
 
+    // This endpoint is deliberately open, so bound what an anonymous caller can
+    // do with it: one write per minute, per address.
+    $bucket = 'nerva_ms_save_' . md5( isset( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : '' );
+    if ( get_transient( $bucket ) ) {
+        return new WP_Error( 'rate_limited', 'Too many requests.', [ 'status' => 429 ] );
+    }
+    set_transient( $bucket, 1, NERVA_MILESTONES_SAVE_INTERVAL );
+
+    // Only snapshots that actually exist get a file. Without this, absint()
+    // allows two billion filenames and the directory can be filled at will.
+    $table  = $wpdb->prefix . 'nerva_tracker_snapshots';
+    $exists = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $table WHERE id = %d", $snapshot_id ) );
+
+    if ( ! $exists ) {
+        return new WP_Error( 'unknown_snapshot', 'No such snapshot.', [ 'status' => 404 ] );
+    }
+
+    // Reject oversized payloads before spending memory decoding them.
+    if ( strlen( $image_data ) > NERVA_MILESTONES_MAX_IMAGE_BYTES * 2 ) {
+        return new WP_Error( 'image_too_large', 'Image exceeds the size limit.', [ 'status' => 413 ] );
+    }
+
     // Strip the data URI header if the browser included it
     $image_data = preg_replace( '/^data:image\/png;base64,/', '', $image_data );
     $decoded    = base64_decode( $image_data, true );
@@ -313,9 +345,33 @@ function nerva_milestones_save_screenshot( WP_REST_Request $request ) {
         return new WP_Error( 'invalid_image', 'Image data could not be decoded.', [ 'status' => 400 ] );
     }
 
-    // Verify it's actually a PNG (check magic bytes)
-    if ( substr( $decoded, 0, 8 ) !== "\x89PNG\r\n\x1a\n" ) {
+    if ( strlen( $decoded ) > NERVA_MILESTONES_MAX_IMAGE_BYTES ) {
+        return new WP_Error( 'image_too_large', 'Image exceeds the size limit.', [ 'status' => 413 ] );
+    }
+
+    // Parse the image structure rather than trusting the first eight bytes. A
+    // PNG header followed by arbitrary content passes a magic-byte check.
+    // getimagesizefromstring() is core PHP and does not require the GD extension.
+    $info = @getimagesizefromstring( $decoded );
+    if ( $info === false || $info[2] !== IMAGETYPE_PNG ) {
         return new WP_Error( 'invalid_image', 'Uploaded data is not a valid PNG.', [ 'status' => 400 ] );
+    }
+
+    // Bound the dimensions too, so a small file cannot declare a huge canvas.
+    if ( $info[0] > 4000 || $info[1] > 4000 ) {
+        return new WP_Error( 'invalid_image', 'Image dimensions exceed the limit.', [ 'status' => 413 ] );
+    }
+
+    // Where GD is available, decode it properly. getimagesizefromstring() reads
+    // the header and will accept a valid header followed by arbitrary bytes;
+    // a full decode will not. Conditional so this never becomes a hard
+    // dependency on a host without the extension.
+    if ( function_exists( 'imagecreatefromstring' ) ) {
+        $image = @imagecreatefromstring( $decoded );
+        if ( $image === false ) {
+            return new WP_Error( 'invalid_image', 'Uploaded data is not a valid PNG.', [ 'status' => 400 ] );
+        }
+        imagedestroy( $image );
     }
 
     $upload_dir = wp_upload_dir();
