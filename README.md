@@ -15,10 +15,13 @@ WordPress structure, templates and functionality:
   `#5f5bc7`), light & dark themes via CSS custom properties, consistent radii,
   shadows and motion easing.
 - **Typography**: Space Grotesk (headings), Inter (body), JetBrains Mono (stats,
-  addresses, versions) — loaded with `display=swap` and preconnect hints.
-- **Hero**: clear value proposition, primary CTAs, live XNV price chip (CoinGecko,
-  cached 2 min in `sessionStorage`) and a protocol specs grid with the live
-  circulating supply counter (one-time count-up animation).
+  addresses, versions) — self-hosted in `inc/assets/fonts` (latin subsets,
+  `display=swap`) so the theme makes no third-party font request.
+- **Hero**: clear value proposition, primary CTAs, live XNV price chip and a
+  protocol specs grid with the live circulating supply counter (one-time
+  count-up animation). Price data comes from the site's own REST endpoint
+  (`nerva/v1/milestones/latest`), which the server already refreshes hourly
+  from CoinGecko — visitors never contact a third party.
 - **Hero visual**: a custom canvas animation depicts the network itself — solo CPU
   miners orbiting the glowing NERVA core on elliptical traces while data packets
   (blocks and transactions) travel to and from it. DPR-aware, pauses off-screen
@@ -33,13 +36,18 @@ WordPress structure, templates and functionality:
   indicator and a scroll-progress hairline.
 - **Motion**: scroll-reveal via `IntersectionObserver`, animated aurora gradient
   headline, gel-shine primary buttons, film-grain hero texture, micro-interactions
-  — all disabled under `prefers-reduced-motion`.
+  — all disabled under `prefers-reduced-motion`. Reveal animations are opt-in:
+  content is visible by default and only hidden while `html.nv-anim` is set
+  (an inline head script sets it, a timeout removes it again if
+  `theme-script.js` never runs), so the page can never render blank if a
+  script fails to load.
 - **Extras**: OS detection highlights the recommended download ("Your OS"),
-  back-to-top button, copy-to-clipboard buttons with a `execCommand` fallback
+  back-to-top button, copy-to-clipboard buttons with an `execCommand` fallback
   (paper wallet keys, addresses), theme-aware node map iframe.
 - **Housekeeping**: Owl Carousel and the IE9 html5shiv are no longer loaded
   globally; `style.css` and `theme-script.js` are versioned by file mtime for
-  cache busting.
+  cache busting. Anchor navigation uses the native `scroll-behavior` /
+  `scroll-padding-top` pair, and all scroll handlers are rAF-throttled.
 
 ## What is in this repository
 

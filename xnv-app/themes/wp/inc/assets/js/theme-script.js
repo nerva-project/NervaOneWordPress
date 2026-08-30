@@ -53,7 +53,7 @@ jQuery( function ( $ ) {
     $( window ).on('resize', fullWidthSection );
 
     /*-------------------------------------------------------------------
-     * FIXED MENU — frosted header on scroll
+     * FIXED MENU — frosted header on scroll (rAF-throttled)
      *-------------------------------------------------------------------*/
     function menuscroll() {
         var $navmenu = $('.nav-menu');
@@ -63,8 +63,23 @@ jQuery( function ( $ ) {
             $navmenu.removeClass('is-scrolling');
         }
     }
+
+    // Shared rAF throttle for the plain scroll handlers
+    function onScrollRaf(fn) {
+        var ticking = false;
+        $(window).on('scroll', function() {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(function() {
+                    ticking = false;
+                    fn();
+                });
+            }
+        });
+    }
+
     menuscroll();
-    $(window).on('scroll', menuscroll);
+    onScrollRaf(menuscroll);
 
     /*-------------------------------------------------------------------
      * SCROLL PROGRESS — hairline indicator pinned to the header
@@ -112,7 +127,6 @@ jQuery( function ( $ ) {
         var packets = [];
         var running = false;
         var frameHandle = 0;
-        var lastTime = 0;
 
         var PALETTE = [
             { line: 'rgba(47, 179, 203, ',  node: '#56d5e8' },  // teal
@@ -154,14 +168,15 @@ jQuery( function ( $ ) {
         }
 
         function spawnPacket(time) {
-            var outward = Math.random() < 0.4; // most packets flow toward the core
+            // most packets flow toward the core (found blocks / new transactions)
+            var inward = Math.random() < 0.6;
             var candidates = nodes;
             if (!candidates.length) { return; }
             var n = candidates[Math.floor(Math.random() * candidates.length)];
             packets.push({
                 node: n,
-                t: outward ? 0 : 1,
-                dir: outward ? 1 : -1,
+                t: inward ? 0 : 1,
+                dir: inward ? 1 : -1,
                 speed: 0.00035 + Math.random() * 0.00025,
                 start: time,
                 color: n.color,
@@ -278,7 +293,6 @@ jQuery( function ( $ ) {
 
         function frame(time) {
             if (!running) { return; }
-            if (!lastTime) { lastTime = time; }
             drawScene(time);
             if (packets.length < 10 && Math.random() < 0.055) { spawnPacket(time); }
             frameHandle = window.requestAnimationFrame(frame);
@@ -287,7 +301,6 @@ jQuery( function ( $ ) {
         function start() {
             if (running) { return; }
             running = true;
-            lastTime = 0;
             frameHandle = window.requestAnimationFrame(frame);
         }
 
@@ -299,12 +312,21 @@ jQuery( function ( $ ) {
         buildNodes();
         resize();
 
-        // Seed a few packets immediately so the first paint already tells the story
-        for (var i = 0; i < 4; i++) { spawnPacket(0); }
+        // Seed a few packets mid-flight so the first paint already tells the story.
+        // rAF timestamps share the performance.now() time origin, so seeding
+        // with it keeps the packets alive on the first animated frame — and the
+        // static reduced-motion frame below uses the same reference time.
+        var STATIC_T = 4000; // reference time for the single reduced-motion frame
+        if (prefersReducedMotion) {
+            for (var i = 0; i < 4; i++) { spawnPacket(STATIC_T - 500 - i * 380); }
+        } else {
+            var seedTime = window.performance && performance.now ? performance.now() : 0;
+            for (var j = 0; j < 4; j++) { spawnPacket(seedTime - j * 380); }
+        }
 
         if (prefersReducedMotion) {
             // Single calm frame, no motion
-            drawScene(4000);
+            drawScene(STATIC_T);
         } else {
             // Only animate while visible
             if ('IntersectionObserver' in window) {
@@ -323,16 +345,16 @@ jQuery( function ( $ ) {
                 window.requestAnimationFrame(function() {
                     resizeTicking = false;
                     resize();
-                    if (prefersReducedMotion) { drawScene(0); }
+                    if (prefersReducedMotion) { drawScene(STATIC_T); }
                 });
             }
         });
     })();
 
     /*-------------------------------------------------------------------
-     * ACTIVE NAV ON SCROLL (one-page)
+     * ACTIVE NAV ON SCROLL (one-page) — rAF-throttled
      *-------------------------------------------------------------------*/
-    var sectionIds = ['home', 'features', 'our-mission', 'nodemap', 'roadmap', 'exchanges', 'downloads', 'paper-wallet', 'mining', 'stay-tuned', 'faq', 'blog'];
+    var sectionIds = ['home', 'features', 'roadmap', 'exchanges', 'downloads', 'mining', 'blog'];
     var $allNavLinks = $('#menu-top-menu .nav-link, #menu-top-menu .dropdown-item');
 
     function updateActiveNav() {
@@ -355,10 +377,12 @@ jQuery( function ( $ ) {
             return href === '#' + activeId || href.indexOf('/#' + activeId) !== -1;
         });
         $match.addClass('active');
+        // light the parent dropdown toggle as well (e.g. Resources while Blog is in view)
+        $match.closest('.dropdown').find('> .nav-link.dropdown-toggle').addClass('active');
     }
 
     updateActiveNav();
-    $(window).on('scroll', updateActiveNav);
+    onScrollRaf(updateActiveNav);
 
     /*-------------------------------------------------------------------
      * NAVBAR CLOSE ON CLICK (mobile)
@@ -382,27 +406,10 @@ jQuery( function ( $ ) {
     });
 
     /*-------------------------------------------------------------------
-     * ONE PAGE SMOOTH SCROLLING
+     * ONE PAGE ANCHORS — handled natively by scroll-behavior +
+     * scroll-padding-top in style.css, which track --nav-h across
+     * breakpoints. No JS handler needed (it would fight the CSS offset).
      *-------------------------------------------------------------------*/
-    $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').not('[data-toggle="tab"]').not('[data-toggle="collapse"]').not('[data-toggle="dropdown"]').on('click', function(event) {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: target.offset().top - 84
-                }, 700, 'swing', function() {
-                    var $target = $(target);
-                    $target.focus();
-                    if (!$target.is(":focus")) {
-                        $target.attr('tabindex', '-1');
-                        $target.focus();
-                    }
-                });
-            }
-        }
-    });
 
     /*-------------------------------------------------------------------
      * OWL CAROUSEL (testimonials/gallery — only if present)
@@ -461,6 +468,15 @@ jQuery( function ( $ ) {
      * SCROLL REVEAL — sections & cards animate in (IntersectionObserver)
      *-------------------------------------------------------------------*/
     var $revealItems = $('.reveal');
+
+    // The reveal system is opt-in: html.nv-anim is only present while this
+    // script is expected to run (set by header.php, removed by a timeout if
+    // we never get here). Clear that timeout now that we did.
+    if (window.__nvAnimFallback) {
+        clearTimeout(window.__nvAnimFallback);
+        window.__nvAnimFallback = null;
+    }
+
     if ($revealItems.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
         var revealObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
@@ -489,9 +505,9 @@ jQuery( function ( $ ) {
         $backToTop.toggleClass('visible', $(window).scrollTop() > 600);
     }
     toggleBackToTop();
-    $(window).on('scroll', toggleBackToTop);
+    onScrollRaf(toggleBackToTop);
     $backToTop.on('click', function() {
-        $('html, body').animate({ scrollTop: 0 }, 600);
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
 
     /*-------------------------------------------------------------------
@@ -501,7 +517,7 @@ jQuery( function ( $ ) {
         var ua = navigator.userAgent;
         var os = null;
         if (/Android/i.test(ua)) os = 'android';
-        else if (/iPhone|iPad|iPod/i.test(ua)) os = 'mac';
+        else if (/iPhone|iPad|iPod/i.test(ua)) os = null; // no iOS builds exist — show no recommendation
         else if (/Windows/i.test(ua)) os = 'windows';
         else if (/Mac OS X|Macintosh/i.test(ua)) os = 'mac';
         else if (/Linux|X11/i.test(ua)) os = 'linux';
@@ -515,41 +531,44 @@ jQuery( function ( $ ) {
     })();
 
     /*-------------------------------------------------------------------
-     * LIVE PRICE CHIP (CoinGecko, cached 120s in sessionStorage)
-     * Fails silently if the API is unreachable.
+     * LIVE PRICE CHIP — first-party data. The server already pulls CoinGecko
+     * hourly and caches it (inc/nerva-milestones.php, REST route
+     * nerva/v1/milestones/latest), so the browser never contacts a third
+     * party. Fails silently if the endpoint is unreachable.
      *-------------------------------------------------------------------*/
     (function livePrice() {
         var $priceWrap = $('#nv-price-chip');
         if (!$priceWrap.length) return;
 
+        var endpoint = (window.nvPrice && window.nvPrice.endpoint) || '/wp-json/nerva/v1/milestones/latest';
         var CACHE_KEY = 'nerva-xnv-price';
         var TTL = 120000; // 2 min
 
-        function render(data) {
-            if (!data || !data.nerva || !data.nerva.usd) return;
-            var price = data.nerva.usd;
-            var change = data.nerva.usd_24h_change;
+        function render(price, change) {
+            if (!isFinite(price) || price <= 0) return;
             var priceStr = price >= 1 ? price.toFixed(3) : price.toFixed(5);
             var html = '$' + priceStr;
-            if (typeof change === 'number') {
+            if (typeof change === 'number' && isFinite(change)) {
                 var up = change >= 0;
-                html += ' <span class="chg ' + (up ? 'up' : 'down') + '">' + (up ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%</span>';
+                html += ' <span class="chg ' + (up ? 'up' : 'down') + '">' + (up ? '\u25B2' : '\u25BC') + ' ' + Math.abs(change).toFixed(1) + '%</span>';
             }
             $priceWrap.html(html).removeClass('d-none');
         }
 
         try {
             var cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
-            if (cached && (Date.now() - cached.t) < TTL && cached.d) {
-                render(cached.d);
+            if (cached && (Date.now() - cached.t) < TTL && cached.p) {
+                render(cached.p, cached.c);
                 return;
             }
         } catch (e) { /* storage unavailable */ }
 
-        $.getJSON('https://api.coingecko.com/api/v3/simple/price?ids=nerva&vs_currencies=usd&include_24hr_change=true')
-            .done(function(data) {
-                render(data);
-                try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: data })); } catch (e) {}
+        $.getJSON(endpoint)
+            .done(function(row) {
+                var price = parseFloat(row.price_usd);
+                var change = parseFloat(row.change_24h);
+                render(price, isNaN(change) ? null : change);
+                try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), p: price, c: isNaN(change) ? null : change })); } catch (e) {}
             })
             .fail(function() { $priceWrap.addClass('d-none'); });
     })();
@@ -558,12 +577,17 @@ jQuery( function ( $ ) {
      * COPY BUTTONS — data-copy attribute (addresses, keys…)
      *-------------------------------------------------------------------*/
     $(document).on('click', '.nv-copy-btn', function() {
-        var text = $(this).data('copy') || '';
+        var text = $(this).attr('data-copy') || '';
         var $btn = $(this);
+        // capture the label once, before it is ever swapped, so repeated
+        // clicks inside the window restore the right text
+        if (!$btn.data('nv-original')) { $btn.data('nv-original', $btn.text()); }
         function done() {
-            var original = $btn.text();
             $btn.text('Copied ✓');
-            setTimeout(function() { $btn.text(original); }, 1800);
+            clearTimeout($btn.data('nv-timer'));
+            $btn.data('nv-timer', setTimeout(function() {
+                $btn.text($btn.data('nv-original'));
+            }, 1800));
         }
         function legacyCopy() {
             var $tmp = $('<textarea>').val(text).appendTo('body').css('position', 'fixed').css('opacity', 0);
@@ -580,15 +604,20 @@ jQuery( function ( $ ) {
     });
 
     /*-------------------------------------------------------------------
-     * Add copy buttons next to paper wallet key blocks (after generation)
+     * Paper wallet — copy buttons on the generated key lines only.
+     * Skips the safety notice and copies the bare value (label stripped),
+     * so the clipboard content can be pasted straight into a wallet.
      *-------------------------------------------------------------------*/
     $(document).on('click', '#generate_paper_wallet', function() {
         setTimeout(function() {
-            $('#paperwallet_result p').each(function() {
-                var text = $(this).clone().find('.nv-copy-btn').remove().end().text().trim();
-                if (!text) return;
-                if ($(this).find('.nv-copy-btn').length) return;
-                $(this).append(' <button type="button" class="nv-copy-btn" data-copy="' + $('<i>').text(text).html() + '">Copy</button>');
+            $('#paperwallet_result p').not('.alert-danger').each(function() {
+                var $p = $(this);
+                if ($p.find('.nv-copy-btn').length) { return; }
+                var value = $p.text().trim().replace(/^(Public|Secret):\s*/i, '');
+                if (!value) { return; }
+                var $btn = $('<button>', { type: 'button', 'class': 'nv-copy-btn', text: 'Copy' });
+                $btn.attr('data-copy', value);
+                $p.append(' ').append($btn);
             });
         }, 50);
     });
@@ -603,18 +632,6 @@ jQuery( function ( $ ) {
                 $(this).collapse('hide');
             }
         });
-    });
-
-    /*-------------------------------------------------------------------
-     * Page scroller (blog header)
-     *-------------------------------------------------------------------*/
-    $('.page-scroller').on('click', function (e) {
-        e.preventDefault();
-        var target = this.hash;
-        var $target = $(target);
-        $('html, body').animate({
-            'scrollTop': $target.offset().top - 84
-        }, 700, 'swing');
     });
 
 });
