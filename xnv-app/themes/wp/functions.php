@@ -169,6 +169,13 @@ add_action( 'widgets_init', 'wp_bootstrap_starter_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wp_bootstrap_starter_scripts() {
+	// Nerva typography — Space Grotesk (headings), Inter (body), JetBrains Mono
+	// (data), self-hosted in inc/assets/fonts so no third-party request is made.
+	// Skipped when a typography preset is active: it loads its own font pair.
+	if ( ! get_theme_mod( 'preset_style_setting' ) ) {
+		wp_enqueue_style( 'nerva-fonts', get_template_directory_uri() . '/inc/assets/css/nerva-fonts.css', array(), filemtime( get_template_directory() . '/inc/assets/css/nerva-fonts.css' ) );
+	}
+
 	// load bootstrap css
     if ( get_theme_mod( 'cdn_assets_setting' ) === 'yes' ) {
         wp_enqueue_style( 'wp-bootstrap-starter-bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css' );
@@ -179,8 +186,8 @@ function wp_bootstrap_starter_scripts() {
     }
 	// load bootstrap css
 	// load AItheme styles
-	// load WP Bootstrap Starter styles
-	wp_enqueue_style( 'wp-bootstrap-starter-style', get_stylesheet_uri() );
+	// load WP Bootstrap Starter styles (version = file mtime, busts caches after updates)
+	wp_enqueue_style( 'wp-bootstrap-starter-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
     if(get_theme_mod( 'theme_option_setting' ) && get_theme_mod( 'theme_option_setting' ) !== 'default') {
         wp_enqueue_style( 'wp-bootstrap-starter-'.get_theme_mod( 'theme_option_setting' ), get_template_directory_uri() . '/inc/assets/css/presets/theme-option/'.get_theme_mod( 'theme_option_setting' ).'.css', false, '' );
     }
@@ -220,9 +227,7 @@ function wp_bootstrap_starter_scripts() {
 
 	wp_enqueue_script('jquery');
 
-    // Internet Explorer HTML5 support
-    wp_enqueue_script( 'html5hiv',get_template_directory_uri().'/inc/assets/js/html5.js', array(), '3.7.0', false );
-    wp_script_add_data( 'html5hiv', 'conditional', 'lt IE 9' );
+    // Internet Explorer HTML5 support (dropped: IE9 is long gone)
 
 	// load bootstrap js
     if ( get_theme_mod( 'cdn_assets_setting' ) === 'yes' ) {
@@ -232,7 +237,12 @@ function wp_bootstrap_starter_scripts() {
         wp_enqueue_script('wp-bootstrap-starter-popper', get_template_directory_uri() . '/inc/assets/js/popper.min.js', array(), '', true );
         wp_enqueue_script('wp-bootstrap-starter-bootstrapjs', get_template_directory_uri() . '/inc/assets/js/bootstrap.min.js', array(), '', true );
     }
-    wp_enqueue_script('wp-bootstrap-starter-themejs', get_template_directory_uri() . '/inc/assets/js/theme-script.js', array(), '', true );
+    wp_enqueue_script('wp-bootstrap-starter-themejs', get_template_directory_uri() . '/inc/assets/js/theme-script.js', array('jquery'), filemtime( get_template_directory() . '/inc/assets/js/theme-script.js' ), true );
+    // First-party price data for the homepage chip: the server already pulls
+    // CoinGecko hourly (inc/nerva-milestones.php), so visitors never have to.
+    wp_localize_script( 'wp-bootstrap-starter-themejs', 'nvPrice', array(
+        'endpoint' => esc_url_raw( rest_url( 'nerva/v1/milestones/latest' ) ),
+    ) );
 	wp_enqueue_script( 'wp-bootstrap-starter-skip-link-focus-fix', get_template_directory_uri() . '/inc/assets/js/skip-link-focus-fix.min.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -257,9 +267,6 @@ function posts_link_attributes() {
 function load_html_nerva_scripts_in_footer() {
 	if ( ! is_admin() ) { // if is frontend
 
-		// load owl carousel js everywhere
-		wp_enqueue_script( 'owlcrsl', get_stylesheet_directory_uri() . '/inc/assets/js/owl.carousel.min.js', array(), '', false );
-	
 		// load paperwallet js only on frontpage
 		if ( is_front_page() && is_home() ) { // Default homepage
 		

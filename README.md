@@ -6,6 +6,49 @@ website of the NERVA (XNV) cryptocurrency project.
 NERVA is a privacy cryptocurrency with CPU-only mining and no pool support. It is
 community managed and maintained on a voluntary basis.
 
+## Theme v4.1 — 2026 redesign
+
+The theme was rebuilt around a modern design system while keeping the same
+WordPress structure, templates and functionality:
+
+- **Design tokens** (`style.css`): refined brand palette (teal `#1290a7` → violet
+  `#5f5bc7`), light & dark themes via CSS custom properties, consistent radii,
+  shadows and motion easing.
+- **Typography**: Space Grotesk (headings), Inter (body), JetBrains Mono (stats,
+  addresses, versions) — self-hosted in `inc/assets/fonts` (latin subsets,
+  `display=swap`) so the theme makes no third-party font request.
+- **Hero**: clear value proposition, primary CTAs, live XNV price chip and a
+  protocol specs grid with the live circulating supply counter (one-time
+  count-up animation). Price data comes from the site's own REST endpoint
+  (`nerva/v1/milestones/latest`), which the server already refreshes hourly
+  from CoinGecko — visitors never contact a third party.
+- **Hero visual**: a custom canvas animation depicts the network itself — solo CPU
+  miners orbiting the glowing NERVA core on elliptical traces while data packets
+  (blocks and transactions) travel to and from it. DPR-aware, pauses off-screen
+  via `IntersectionObserver`, degrades to a single static frame under
+  `prefers-reduced-motion`.
+- **Specs HUD**: the protocol grid sits on a frosted-glass panel (backdrop blur,
+  etched micro-grid, hairline light catch) so the data reads like a HUD overlay.
+- **Components**: feature/exchange/download cards with soft tinted icon tiles and
+  springy hover lift, editorial ghosted numerals (01/02/03) behind the mission
+  headings, modern roadmap timeline with status badges, restyled FAQ accordion,
+  rich four-column footer, frosted-glass sticky header with an active-section
+  indicator and a scroll-progress hairline.
+- **Motion**: scroll-reveal via `IntersectionObserver`, animated aurora gradient
+  headline, gel-shine primary buttons, film-grain hero texture, micro-interactions
+  — all disabled under `prefers-reduced-motion`. Reveal animations are opt-in:
+  content is visible by default and only hidden while `html.nv-anim` is set
+  (an inline head script sets it, a timeout removes it again if
+  `theme-script.js` never runs), so the page can never render blank if a
+  script fails to load.
+- **Extras**: OS detection highlights the recommended download ("Your OS"),
+  back-to-top button, copy-to-clipboard buttons with an `execCommand` fallback
+  (paper wallet keys, addresses), theme-aware node map iframe.
+- **Housekeeping**: Owl Carousel and the IE9 html5shiv are no longer loaded
+  globally; `style.css` and `theme-script.js` are versioned by file mtime for
+  cache busting. Anchor navigation uses the native `scroll-behavior` /
+  `scroll-padding-top` pair, and all scroll handlers are rAF-throttled.
+
 ## What is in this repository
 
 | Path | Contents |
