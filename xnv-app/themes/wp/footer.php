@@ -57,7 +57,7 @@
 						<li><a href="https://explorer.nerva.one" target="_blank" rel="noopener">Block explorer <span class="fa fa-external-link-alt ext" aria-hidden="true"></span></a></li>
 						<li><a href="https://map.nerva.one" target="_blank" rel="noopener">Node map <span class="fa fa-external-link-alt ext" aria-hidden="true"></span></a></li>
 						<li><a href="<?php echo esc_url( home_url( '/nerva-milestones/' ) ); ?>">Milestones</a></li>
-						<li><a href="https://nerva.one/nerva-mining-profitability-calculator/" target="_blank" rel="noopener">Mining calculator <span class="fa fa-external-link-alt ext" aria-hidden="true"></span></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/nerva-mining-profitability-calculator/' ) ); ?>">Mining calculator</a></li>
 						<li><a href="<?php echo esc_url( home_url( '/donate/' ) ); ?>">Donate &amp; treasury</a></li>
 						<li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">FAQ</a></li>
 					</ul>

@@ -702,7 +702,7 @@ header#masthead.menu-is-open {
 @media (max-width: 1199.98px) {
     #masthead #main-nav,
     #masthead #main-nav-wp { flex-basis: 100%; }
-    #dark-mode-toggle { margin-left: auto; }
+    #dark-mode-toggle { margin-left: auto; margin-right: .6rem; }
     #masthead .navbar-collapse {
         background: #101a29;
         border: 1px solid rgba(236, 241, 247, .1);
@@ -738,7 +738,7 @@ header#masthead.menu-is-open {
 
 /* Desktop: menus to the right, dark-mode toggle at the far edge */
 @media (min-width: 1200px) {
-    #masthead .nav-inner > #dark-mode-toggle { order: 10; }
+    #masthead .nav-inner > #dark-mode-toggle { order: 10; margin-left: 1rem; }
     #masthead .nav-inner .navbar-collapse { order: 5; }
     #masthead .nav-inner #main-nav-wp { flex-grow: 0; }
 }
@@ -2419,6 +2419,146 @@ body:not(.home):not(.blog) #content.site-content { padding-top: calc(var(--nav-h
 
 /* 404 search emphasis */
 .error-404 .search-form { max-width: 420px; }
+
+/*--------------------------------------------------------------
+# Mining profitability calculator
+# Page content lives in xnv-app/pages/ and is pasted into WordPress.
+# Styling it here rather than in an inline <style> keeps it on the design
+# tokens, so it follows dark mode and survives edits in the page editor.
+--------------------------------------------------------------*/
+.xnv-calcwrap {
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+}
+
+.xnv-calc {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border-light);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.75rem 1.75rem;
+    margin-bottom: 2.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.xnv-entry { margin-bottom: 1.1rem; }
+
+.xnv-calcwrap label {
+    display: block;
+    font-size: .875rem;
+    font-weight: 500;
+    color: var(--clr-text);
+    margin-bottom: .35rem;
+}
+
+/* Matches .form-control so the pasted markup needs no Bootstrap classes */
+.xnv-calcwrap input[type="number"] {
+    width: 100%;
+    padding: .6rem .85rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: .95rem;
+    color: var(--clr-text);
+    background: var(--clr-bg-secondary);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.xnv-calcwrap input[type="number"]:focus {
+    outline: none;
+    border-color: var(--nv-teal-bright);
+    box-shadow: 0 0 0 3px rgba(47, 179, 203, .18);
+}
+
+/* Checkbox row reads as one line rather than a floated box */
+#xnv-hicb {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin: 1.2rem 0 1.4rem;
+}
+
+#xnv-hicb label { margin-bottom: 0; order: 2; }
+
+#hashrateIncluded {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    accent-color: var(--nv-teal);
+    margin: 0;
+    order: 1;
+}
+
+.xnv-calc .btn-primary { margin-top: .4rem; }
+
+#results-section {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border-light);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+}
+
+#results-section h3 { font-size: 1.15rem; margin-bottom: .35rem; }
+
+#results ul {
+    list-style: none;
+    padding: 0;
+    margin: .9rem 0 1.4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .1rem 1.6rem;
+}
+
+#results li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .42rem 0;
+    border-bottom: 1px solid var(--clr-border-subtle);
+    font-size: .92rem;
+    font-variant-numeric: tabular-nums;
+}
+
+#result-chart {
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+/* Chart.js sizes the canvas from its own aspectRatio; a fixed px size here
+   fights it and squashes the plot. Let the container do the constraining. */
+#profitChart { width: 100% !important; height: auto !important; }
+
+/* Benchmark tables */
+.xnv-bench {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+    margin-bottom: 2rem;
+}
+
+.xnv-bench th,
+.xnv-bench td {
+    border: 1px solid var(--clr-border-light);
+    padding: .5rem .75rem;
+    text-align: left;
+}
+
+.xnv-bench th {
+    background: var(--clr-bg-secondary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: .82rem;
+    letter-spacing: .02em;
+}
+
+.xnv-bench td { font-variant-numeric: tabular-nums; }
+.xnv-bench tbody tr:hover { background: var(--clr-bg-hover); }
+.xnv-bench .not-reported { color: var(--clr-text-muted); font-style: italic; }
+
+@media (max-width: 575.98px) {
+    .xnv-calc, #results-section { padding: 1.25rem 1.1rem; }
+    .xnv-bench { font-size: .82rem; }
+    .xnv-bench th, .xnv-bench td { padding: .4rem .5rem; }
+}
 
 /*--------------------------------------------------------------
 # Milestones page harmonization
