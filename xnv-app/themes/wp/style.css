@@ -351,7 +351,8 @@ abbr[title] { text-decoration: underline dotted; cursor: help; }
 
 .btn-primary,
 a.btn-primary,
-input[type="submit"].btn-primary {
+input[type="submit"].btn-primary,
+#secondary .wp-block-search__button {
     background: linear-gradient(135deg, #1c9cb3 0%, #4f8fd4 52%, #6f68d8 100%);
     background-color: var(--nv-teal);
     color: #fff !important;
@@ -361,7 +362,8 @@ input[type="submit"].btn-primary {
 }
 
 /* Gel shine sweeping across the button on hover */
-.btn-primary::after {
+.btn-primary::after,
+#secondary .wp-block-search__button::after {
     content: "";
     position: absolute;
     top: 0; bottom: 0;
@@ -374,17 +376,22 @@ input[type="submit"].btn-primary {
 }
 
 .btn-primary:hover::after,
-.btn-primary:focus::after { left: 120%; }
+.btn-primary:focus::after,
+#secondary .wp-block-search__button:hover::after,
+#secondary .wp-block-search__button:focus::after { left: 120%; }
 
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus,
+#secondary .wp-block-search__button:hover,
+#secondary .wp-block-search__button:focus {
     color: #fff !important;
     transform: translateY(-2px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .32), 0 4px 10px rgba(9, 30, 66, .22), 0 12px 30px rgba(28, 156, 179, .42);
     filter: brightness(1.06);
 }
 
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active,
+#secondary .wp-block-search__button:active { transform: translateY(0); }
 
 .btn-outline-light,
 .btn-ghost {
@@ -2190,16 +2197,64 @@ article.sticky { border-color: rgba(47, 179, 203, .4); }
 #footer-widget .widget { margin-bottom: 1.6rem; }
 #footer-widget .widget-title { color: var(--clr-heading); }
 
-/* Block-based widgets put every block inside a single .widget wrapper, so the
-   headings between them get no spacing of their own and run into the block
-   above. :not(:first-child) keeps the top of the sidebar tight. */
-#secondary h2:not(:first-child),
-#secondary h3:not(:first-child),
-#secondary h4:not(:first-child) { margin-top: 2rem; }
+/* Block-based widgets put every block inside a single .widget wrapper and nest
+   .wp-widget-group__inner-blocks containers inside one another, so a heading is
+   often the FIRST child of an inner container and gets no spacing from it. Space
+   siblings at any depth instead of keying off :first-child. */
+#secondary .wp-widget-group__inner-blocks > * + * { margin-top: 1.75rem; }
 
-/* A Widget Group saved with an empty title still emits <h2 class="widget-title">,
-   which would otherwise draw its gradient rule with no heading above it. */
-.widget-title:empty { display: none; }
+/* A list belongs to the heading above it, so keep that pair tight. Needs the
+   container in the selector to outrank the sibling rule above. */
+#secondary .wp-widget-group__inner-blocks > h2 + ul,
+#secondary .wp-widget-group__inner-blocks > h3 + ul,
+#secondary .wp-widget-group__inner-blocks > h4 + ul { margin-top: .6rem; }
+
+/* The search block prints its own label, which reads as a section heading in
+   the sidebar. Match the h4s the other blocks use. */
+#secondary .wp-block-search__label {
+    display: block;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -.015em;
+    color: var(--clr-heading);
+    margin-bottom: .6rem;
+}
+
+/* The theme never styled the block search button, so it was picking up size
+   from elsewhere. Keep it tight to the input and smaller than a page button. */
+#secondary .wp-block-search__inside-wrapper { gap: .6rem; }
+
+/* Colour, the gel-shine sweep and the hover lift all come from the shared
+   .btn-primary rules above, which this button is now listed in. Only sizing
+   belongs here, so the two never drift apart. */
+#secondary .wp-block-search__button {
+    margin-left: 0;              /* core spaces the button-outside variant */
+    padding: .45rem .95rem;
+    font-family: 'Inter', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#secondary .wp-block-search__input {
+    padding: .45rem .75rem;
+    font-size: .9rem;
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    background: var(--clr-bg-surface);
+    color: var(--clr-text);
+}
+
+#secondary .wp-block-search__input:focus {
+    outline: none;
+    border-color: var(--nv-teal-bright);
+    box-shadow: 0 0 0 3px rgba(47, 179, 203, .18);
+}
 
 /* Calendar */
 table#wp-calendar { font-size: .88rem; }
