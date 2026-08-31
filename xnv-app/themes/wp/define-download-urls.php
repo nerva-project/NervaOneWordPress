@@ -24,6 +24,6 @@ define('ANDROID_GUI_LINK_ARM', 'https://github.com/nerva-project/NervaOneWalletM
 define('LEDGER_LINK', 'https://nerva.one/#');
 define('QUICKSYNC_LINK', 'https://nerva.one/quicksync/quicksync.raw');
 
-define('MINING_GUI_LINK', 'https://docs.nerva.one/guides/gui/#mining');
-define('MINING_CLI_LINK', 'https://docs.nerva.one/guides/cli/#mining');
+define('MINING_GUI_LINK', 'https://docs.nerva.one/guides/nervaone/');
+define('MINING_CLI_LINK', 'https://docs.nerva.one/guides/cli/');
 ?>
