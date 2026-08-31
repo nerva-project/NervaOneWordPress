@@ -2190,7 +2190,16 @@ article.sticky { border-color: rgba(47, 179, 203, .4); }
 #footer-widget .widget { margin-bottom: 1.6rem; }
 #footer-widget .widget-title { color: var(--clr-heading); }
 
-.sticky-top.sticky-offset { top: calc(var(--nav-h) + 1.5rem); }
+/* Block-based widgets put every block inside a single .widget wrapper, so the
+   headings between them get no spacing of their own and run into the block
+   above. :not(:first-child) keeps the top of the sidebar tight. */
+#secondary h2:not(:first-child),
+#secondary h3:not(:first-child),
+#secondary h4:not(:first-child) { margin-top: 2rem; }
+
+/* A Widget Group saved with an empty title still emits <h2 class="widget-title">,
+   which would otherwise draw its gradient rule with no heading above it. */
+.widget-title:empty { display: none; }
 
 /* Calendar */
 table#wp-calendar { font-size: .88rem; }

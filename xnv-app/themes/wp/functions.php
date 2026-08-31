@@ -129,7 +129,9 @@ function wp_bootstrap_starter_widgets_init() {
         'name'          => esc_html__( 'Sidebar', 'wp-bootstrap-starter' ),
         'id'            => 'sidebar-1',
         'description'   => esc_html__( 'Add widgets here.', 'wp-bootstrap-starter' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s sticky-top sticky-offset">',
+        // No sticky-top here: it pins every widget at the same offset, so they
+        // stack on top of each other as the page scrolls.
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
@@ -439,33 +441,6 @@ require get_template_directory() . '/inc/plugin-compatibility/plugin-compatibili
 if ( ! class_exists( 'wp_bootstrap_navwalker' )) {
     require_once(get_template_directory() . '/inc/wp_bootstrap_navwalker.php');
 }
-
-class Nerva_Pinned_Posts_Widget extends WP_Widget {
-    public function __construct() {
-        parent::__construct('nerva_pinned_posts', 'Pinned Posts', array('description' => 'Displays sticky/pinned posts'));
-    }
-    public function widget($args, $instance) {
-        $sticky_ids = get_option('sticky_posts');
-        if (empty($sticky_ids)) return;
-        $posts = get_posts(array(
-            'post__in'            => $sticky_ids,
-            'ignore_sticky_posts' => 1,
-            'posts_per_page'      => -1,
-        ));
-        if (empty($posts)) return;
-        echo $args['before_widget'];
-        echo '<h4>Pinned Posts</h4>';
-        foreach ($posts as $post) {
-            echo '<div><a href="' . get_permalink($post->ID) . '">' . esc_html($post->post_title) . '</a></div>';
-        }
-        echo $args['after_widget'];
-    }
-    public function form($instance) {}
-    public function update($new_instance, $old_instance) { return $new_instance; }
-}
-add_action('widgets_init', function() {
-    register_widget('Nerva_Pinned_Posts_Widget');
-});
 
 /**
  * Nerva Milestones Tracker
