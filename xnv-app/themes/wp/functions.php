@@ -270,7 +270,7 @@ function load_html_nerva_scripts_in_footer() {
 	if ( ! is_admin() ) { // if is frontend
 
 		// load paperwallet js only on frontpage
-		if ( is_front_page() && is_home() ) { // Default homepage
+		if ( is_front_page() && is_home() && ! is_paged() ) { // Default homepage
 		
 			wp_enqueue_script( 'ppwll', get_stylesheet_directory_uri() . '/inc/assets/js/paperwallet/languages.js', array(), '', false );
 			wp_enqueue_script( 'ppwlj', get_stylesheet_directory_uri() . '/inc/assets/js/paperwallet/paperwallet.js', array(), '', false );
@@ -291,7 +291,7 @@ add_action( 'wp_footer', 'load_html_nerva_scripts_in_footer' );
 function echo_inline_js_code_for_paperwallet() {
 	
 	// Echo paperwallet inline js only on frontpage
-	if ( is_front_page() && is_home() ) { ?>
+	if ( is_front_page() && is_home() && ! is_paged() ) { ?>
 		
 		<script>
 		jQuery(document).ready(function($) {

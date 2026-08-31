@@ -169,28 +169,28 @@
 					<div id="main-nav" class="collapse navbar-collapse justify-content-end">
 						<ul id="menu-top-menu" class="navbar-nav align-items-xl-center">
 							<li class="nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#home'; } else { echo esc_url( home_url( '/#home' )); } ?>">Home</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#home'; } else { echo esc_url( home_url( '/#home' )); } ?>">Home</a>
 							</li>							
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#features'; } else { echo esc_url( home_url( '/#features' )); } ?>">Features</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#features'; } else { echo esc_url( home_url( '/#features' )); } ?>">Features</a>
 							</li>
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#roadmap'; } else { echo esc_url( home_url( '/#roadmap' )); } ?>">Roadmap</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#roadmap'; } else { echo esc_url( home_url( '/#roadmap' )); } ?>">Roadmap</a>
 							</li>                                
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#exchanges'; } else { echo esc_url( home_url( '/#exchanges' )); } ?>">Trade</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#exchanges'; } else { echo esc_url( home_url( '/#exchanges' )); } ?>">Trade</a>
 							</li>
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#downloads'; } else { echo esc_url( home_url( '/#downloads' )); } ?>" >Downloads</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#downloads'; } else { echo esc_url( home_url( '/#downloads' )); } ?>" >Downloads</a>
 							</li>
 							<li class="menu-item nav-item">
-								<a class="nav-link" href="<?php if ( is_front_page() && is_home() ) { echo '#mining'; } else { echo esc_url( home_url( '/#mining' )); } ?>">Mine</a>
+								<a class="nav-link" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#mining'; } else { echo esc_url( home_url( '/#mining' )); } ?>">Mine</a>
 							</li>                                         
 							<li class="menu-item menu-item-has-children dropdown nav-item">
 							<a href="#moredd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link">Resources</a>
 								<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-31269" role="menu">
 									<li class="menu-item nav-item">
-										<a class="dropdown-item" href="<?php echo is_front_page() && is_home() ? '#blog' : esc_url( home_url( '/#blog' ) ); ?>">Blog</a>
+										<a class="dropdown-item" href="<?php echo is_front_page() && is_home() && ! is_paged() ? '#blog' : esc_url( home_url( '/#blog' ) ); ?>">Blog</a>
 									</li>
 									<li class="menu-item nav-item">
 										<?php // No if else for href needed because of absolute urls ?>
@@ -244,7 +244,7 @@
 								</ul>
 							</li>
 							<li class="nav-item nav-item-btn d-none d-xl-inline-flex ml-xl-2">
-								<a class="btn btn-primary nav-cta" href="<?php if ( is_front_page() && is_home() ) { echo '#downloads'; } else { echo esc_url( home_url( '/#downloads' )); } ?>">Get NervaOne</a>
+								<a class="btn btn-primary nav-cta" href="<?php if ( is_front_page() && is_home() && ! is_paged() ) { echo '#downloads'; } else { echo esc_url( home_url( '/#downloads' )); } ?>">Get NervaOne</a>
 							</li>
 						</ul>
 					</div>
