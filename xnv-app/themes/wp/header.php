@@ -153,7 +153,7 @@
 				<nav class="navbar navbar-dark navbar-expand-xl" aria-label="Main navigation">
 					<div class="nav-inner w-100">
 						<div class="navbar-brand">
-							<a href="<?php echo esc_url( home_url( '/' )); ?>" aria-label="Nerva — home">
+							<a href="<?php echo esc_url( home_url( '/' )); ?>" aria-label="Nerva home">
 								<img class="nerva-logo-icon" alt="" src="<?php echo get_template_directory_uri() . '/images/png-nerva-logo-white-256x256.png'; ?>">
 								<img class="nerva-logo-word" src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 							</a>
@@ -205,34 +205,49 @@
 										<a class="dropdown-item" href="https://map.nerva.one" target="_blank" rel="noopener">Node&nbsp;Map <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
 									</li>
 									<li class="menu-item nav-item">
-										<?php // No if else for href needed because of absolute urls ?>
-										<a class="dropdown-item" href="https://nerva.one/nerva-mining-profitability-calculator/" target="_blank" rel="noopener">Calculator <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+										<?php // Internal page, so no target and no external icon ?>
+										<a class="dropdown-item" href="<?php echo esc_url( home_url( '/nerva-mining-profitability-calculator/' ) ); ?>">Calculator</a>
 									</li>
 									<li class="menu-item nav-item">
 										<a class="dropdown-item" href="<?php echo esc_url( home_url( '/nerva-milestones/' ) ); ?>">Milestones</a>
 									</li>
 								</ul>
-							</li>							
+							</li>
+							<?php // Community lives here rather than in a wp_nav_menu() at the
+							      // 'primary' location. A second menu renders its own
+							      // .navbar-collapse, which the toggler cannot reach because it
+							      // targets #main-nav, so those links were unreachable on mobile. ?>
+							<li class="menu-item menu-item-has-children dropdown nav-item">
+							<a href="#communitydd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link">Community</a>
+								<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-community" role="menu">
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://discord.gg/ufysfvcFwe" target="_blank" rel="noopener">Discord <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://t.me/NervaCrypto" target="_blank" rel="noopener">Telegram <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://twitter.com/NervaCurrency" target="_blank" rel="noopener">Twitter <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://www.youtube.com/channel/UC84v_i1iNZrLUUA9XbhuCAQ" target="_blank" rel="noopener">YouTube <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://www.reddit.com/r/NervaCrypto/" target="_blank" rel="noopener">Reddit <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="https://nervaquest.com" target="_blank" rel="noopener">Nerva&nbsp;Quest <span class="fa fa-external-link-alt external-ico" aria-hidden="true"></span></a>
+									</li>
+									<li class="menu-item nav-item">
+										<a class="dropdown-item" href="<?php echo esc_url( home_url( '/donate/' ) ); ?>">Donate</a>
+									</li>
+								</ul>
+							</li>
 							<li class="nav-item nav-item-btn d-none d-xl-inline-flex ml-xl-2">
 								<a class="btn btn-primary nav-cta" href="<?php if ( is_front_page() && is_home() ) { echo '#downloads'; } else { echo esc_url( home_url( '/#downloads' )); } ?>">Get NervaOne</a>
 							</li>
 						</ul>
 					</div>
-					
-					<!-- Check it out menu is located under Appearance > Menus -->
-					<?php
-					wp_nav_menu(array(
-					'theme_location'    => 'primary',
-					'container'       => 'div',
-					'container_id'    => 'main-nav-wp',
-					'container_class' => 'collapse navbar-collapse justify-content-end',
-					'menu_id'         => false,
-					'menu_class'      => 'navbar-nav',
-					'depth'           => 3,
-					'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-					'walker'          => new wp_bootstrap_navwalker()
-					));
-					?>
 					</div><!-- .nav-inner -->
 
 				</nav>

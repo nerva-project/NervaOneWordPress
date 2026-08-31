@@ -11,13 +11,13 @@
                 <h1>Private money,<br><span class="text-gradient">mineable by anyone.</span></h1>
                 <p class="nv-sub">
                     NERVA (XNV) hides the sender, receiver and amount of every transaction by default.
-                    Its CPU-only Proof of Work keeps mining fair: no ASICs, no GPU rigs, no pools —
+                    Its CPU-only Proof of Work keeps mining fair: no ASICs, no GPU rigs, no pools,
                     just ordinary computers securing the network.
                 </p>
                 <div class="hero-cta">
                     <a href="#downloads" class="btn btn-primary btn-lg"><span class="fas fa-download" aria-hidden="true"></span> Download NervaOne</a>
                     <a href="#mining" class="btn btn-ghost btn-lg">Start mining <span class="fas fa-arrow-right" aria-hidden="true"></span></a>
-                    <span id="nv-price-chip" class="nv-price-chip d-none" title="XNV price — CoinGecko" aria-label="XNV price"></span>
+                    <span id="nv-price-chip" class="nv-price-chip d-none" title="XNV price, via CoinGecko" aria-label="XNV price"></span>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -26,7 +26,7 @@
                         <canvas class="nv-net-canvas"></canvas>
                         <div class="nv-net-halo"></div>
                         <div class="nv-net-core">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/nerva-network-1.png" alt="Nerva — decentralized network of CPU miners">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/nerva-network-1.png" alt="Nerva, a decentralized network of CPU miners">
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="spec">
                     <div class="spec-label">Consensus</div>
-                    <div class="spec-value">PoW — CPU mining</div>
+                    <div class="spec-value">PoW (CPU mining)</div>
                 </div>
                 <div class="spec">
                     <div class="spec-label">Hash algorithm</div>
@@ -163,7 +163,7 @@
                         without leaving a trace.
                     </p>
                     <p class="nv-lead mb-4">
-                        CPU-only Proof of Work with no pool support means each miner participates independently —
+                        CPU-only Proof of Work with no pool support means each miner participates independently, giving
                         strong decentralization and a network that is censorship resistant. Cryptonight Adaptive
                         resists ASIC and GPU rigs, so anyone with a regular computer can take part and help secure
                         the network.
@@ -224,7 +224,7 @@
                     <h3>A simple use case</h3>
                     <p>
                         Our use case is simple: a stable blockchain with fast, low-fee transfers usable by anyone,
-                        with a straightforward, no-nonsense interface — plus the tools and resources developers need
+                        with a straightforward, no-nonsense interface, plus the tools and resources developers need
                         to integrate NERVA into their systems and use it as an alternate payment method.
                         <span class="a-color collapsed cursor-pointer" type="" data-toggle="collapse"
                                             data-target="#collapsethree" aria-expanded="false"
@@ -244,7 +244,7 @@
 
             <div class="col-lg-5">
                 <div class="mission-figure reveal d-none d-lg-block">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/nerva-mission-colored.png" alt="The Nerva mission — community driven">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/nerva-mission-colored.png" alt="The Nerva mission: community driven">
                 </div>
             </div>
         </div>
@@ -268,7 +268,7 @@
             <div class="col-12 reveal">
                 <div class="nv-map-frame">
                     <iframe id="nodemap-frame" src="" title="Nerva node map" width="100%" height="100%" style="border:none;" allowfullscreen="" loading="lazy"></iframe>
-                    <span class="nv-map-note"><span class="fas fa-network-wired" aria-hidden="true"></span>&nbsp; Live — map.nerva.one</span>
+                    <span class="nv-map-note"><span class="fas fa-network-wired" aria-hidden="true"></span>&nbsp; Live: map.nerva.one</span>
                 </div>
                 <script>(function(){var dark=document.documentElement.classList.contains('dark-mode');document.getElementById('nodemap-frame').src='https://map.nerva.one/nodemap.html?theme='+(dark?'dark':'light');})();</script>
             </div>
@@ -284,7 +284,7 @@
         <div class="section-title reveal">
             <span class="nv-kicker">Roadmap</span>
             <h2>Where Nerva is heading</h2>
-            <p class="nv-lead">No company, no VC roadmap — just a community building what matters, one release at a time.</p>
+            <p class="nv-lead">No company, no VC roadmap. Just a community building what matters, one release at a time.</p>
         </div>
 
         <div class="nv-roadmap-grid">
@@ -501,8 +501,8 @@
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/nerva-crowdgift-deadline.png" alt="Nerva timeline illustration">
                 </div>
                 <p class="nv-note">
-                    Delivered by volunteers since 2018. Progress on this page is maintained by the community —
-                    trade-offs and priorities are discussed openly on Discord.
+                    Delivered by volunteers since 2018. Progress on this page is maintained by the community.
+                    Trade-offs and priorities are discussed openly on Discord.
                 </p>
             </div>
         </div>
@@ -526,9 +526,9 @@
                         <img class="xchg-logo" src="https://nerva.one/xnv-app/uploads/2026/01/nonkyc_header_new.png" alt="NonKyc exchange" loading="lazy" height="64">
                         <h3 class="card-title">Nerva on NonKyc</h3>
                         <p class="pair-label">Monero (XMR) pair</p>
-                        <a class="btn btn-primary btn-block" href="https://nonkyc.io/market/XNV_XMR?ref=697b9a8bf1f764f0c423e239" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV – XMR</a>
+                        <a class="btn btn-primary btn-block" href="https://nonkyc.io/market/XNV_XMR?ref=697b9a8bf1f764f0c423e239" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV/XMR</a>
                         <p class="pair-label">Tether (USDT) pair</p>
-                        <a class="btn btn-primary btn-block" href="https://nonkyc.io/market/XNV_USDT?ref=697b9a8bf1f764f0c423e239" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV – USDT</a>
+                        <a class="btn btn-primary btn-block" href="https://nonkyc.io/market/XNV_USDT?ref=697b9a8bf1f764f0c423e239" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV/USDT</a>
                     </div>
                 </div>
             </div>
@@ -539,9 +539,9 @@
                         <img class="xchg-logo" src="https://nerva.one/xnv-app/uploads/2026/02/cexswap_logo.png" alt="CEXSwap exchange" loading="lazy" height="64">
                         <h3 class="card-title">Nerva on CEXSwap</h3>
                         <p class="pair-label">Monero (XMR) pair</p>
-                        <a class="btn btn-primary btn-block" href="https://cexswap.cc/trade/XNV-XMR" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV – XMR</a>
+                        <a class="btn btn-primary btn-block" href="https://cexswap.cc/trade/XNV-XMR" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV/XMR</a>
                         <p class="pair-label">Bitcoin (BTC) pair</p>
-                        <a class="btn btn-primary btn-block" href="https://cexswap.cc/trade/XNV-BTC" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV – BTC</a>
+                        <a class="btn btn-primary btn-block" href="https://cexswap.cc/trade/XNV-BTC" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV/BTC</a>
                     </div>
                 </div>
             </div>
@@ -552,7 +552,7 @@
                         <img class="xchg-logo" src="https://nerva.one/xnv-app/uploads/2026/05/noirtrade_logo.png" alt="NoirTrade exchange" loading="lazy" height="64">
                         <h3 class="card-title">Nerva on NoirTrade</h3>
                         <p class="pair-label">Tether (USDT) pair</p>
-                        <a class="btn btn-primary btn-block" href="https://noirtrade.com/trade?pair=XNV_USDT0" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV – USDT</a>
+                        <a class="btn btn-primary btn-block" href="https://noirtrade.com/trade?pair=XNV_USDT0" target="_blank" rel="nofollow noopener"><span class="fas fa-exchange-alt" aria-hidden="true"></span> &nbsp;XNV/USDT</a>
                     </div>
                 </div>
             </div>
@@ -573,7 +573,7 @@
                 <span class="nv-version-pill"><b>GUI&nbsp;<?php echo GUI_VERSION; ?></b> <?php echo GUI_CODENAME; ?></span>
                 <span class="nv-version-pill"><b>CLI&nbsp;<?php echo CLI_VERSION; ?></b> <?php echo CLI_CODENAME; ?></span>
             </p>
-            <p class="nv-lead">Nerva One is the all-in-one wallet &amp; miner — pick your platform and you're minutes away from your first block.</p>
+            <p class="nv-lead">Nerva One is the all-in-one wallet and miner. Pick your platform and you're minutes away from your first block.</p>
         </div>
         <div class="row">
 
@@ -693,7 +693,7 @@
                         </div>
                         <div class="dl-group">
                             <div class="dl-group-label">Build from source</div>
-                            <a class="btn btn-block" href="https://github.com/nerva-project" target="_blank" rel="noopener"><span class="fab fa-github" aria-hidden="true"></span> &nbsp;GitHub — nerva-project</a>
+                            <a class="btn btn-block" href="https://github.com/nerva-project" target="_blank" rel="noopener"><span class="fab fa-github" aria-hidden="true"></span> &nbsp;GitHub: nerva-project</a>
                         </div>
                     </div>
                 </div>
@@ -711,7 +711,7 @@
                         </div>
                         <div class="dl-group">
                             <div class="dl-group-label">Bootstrap a node fast</div>
-                            <a class="btn btn-block" href="<?php echo QUICKSYNC_LINK; ?>"><span class="fas fa-bolt" aria-hidden="true"></span> &nbsp;QuickSync — blockchain snapshot</a>
+                            <a class="btn btn-block" href="<?php echo QUICKSYNC_LINK; ?>"><span class="fas fa-bolt" aria-hidden="true"></span> &nbsp;QuickSync (blockchain snapshot)</a>
                         </div>
                     </div>
                 </div>
@@ -730,8 +730,8 @@
                 <span class="nv-kicker">Cold storage</span>
                 <h2>Paper wallet</h2>
                 <p class="nv-lead mb-4">
-                    Just looking to buy some NERVA and stash it away? Generate a paper wallet —
-                    your keys are created locally in your browser and never leave this page.
+                    Just looking to buy some NERVA and stash it away? Generate a paper wallet.
+                    Your keys are created locally in your browser and never leave this page.
                 </p>
                 <button class="btn btn-primary btn-lg" type="button" id="generate_paper_wallet">
                     <span class="fas fa-key" aria-hidden="true"></span> &nbsp;Generate wallet
@@ -770,8 +770,8 @@
                 <span class="nv-kicker">Mining</span>
                 <h2>Start mining in minutes</h2>
                 <p class="nv-lead mb-4">
-                    Nerva is super easy to mine. No extra software, no pool setup, no configuration files —
-                    download NervaOne, click start, and your CPU does the rest.
+                    Nerva is super easy to mine. No extra software, no pool setup, no configuration files.
+                    Download NervaOne, click start, and your CPU does the rest.
                 </p>
                 <div class="dl-group">
                     <a href="<?php echo MINING_GUI_LINK; ?>" class="btn btn-primary btn-block" target="_blank" rel="noopener">GUI mining tutorial <small>(new users)</small></a>
@@ -779,7 +779,7 @@
                 </div>
                 <div class="dl-group">
                     <div class="dl-group-label">Estimate your rewards</div>
-                    <a class="btn btn-block" href="https://nerva.one/nerva-mining-profitability-calculator/" target="_blank" rel="nofollow noopener"><span class="fas fa-calculator" aria-hidden="true"></span> &nbsp;Nerva mining calculator</a>
+                    <a class="btn btn-block" href="<?php echo esc_url( home_url( '/nerva-mining-profitability-calculator/' ) ); ?>"><span class="fas fa-calculator" aria-hidden="true"></span> &nbsp;Nerva mining calculator</a>
                     <a class="btn btn-block" href="https://www.cryptunit.com/coin/XNV?hr=1000" target="_blank" rel="nofollow noopener"><span class="fas fa-chart-line" aria-hidden="true"></span> &nbsp;CryptUnit calculator</a>
                 </div>
             </div>
@@ -795,7 +795,7 @@
         <div class="section-title reveal">
             <span class="nv-kicker">Community</span>
             <h2>Join the conversation</h2>
-            <p class="nv-lead">Nerva is built by its community — ask questions, share ideas, or just hang out.</p>
+            <p class="nv-lead">Nerva is built by its community. Ask questions, share ideas, or just hang out.</p>
         </div>
         <div class="social-channels reveal">
             <div class="nv-social-row">
@@ -877,7 +877,7 @@
                     <div id="collapseFiveLeftThree" class="panel-collapse collapse" aria-expanded="false" role="tablist">
                         <div class="panel-body">
                             <div class="text-accordion">
-                                <p>Use the <a href="https://www.cryptunit.com/coin/XNV" target="_blank" rel="nofollow noopener">mining calculator from CryptUnit</a> or our own <a href="https://nerva.one/nerva-mining-profitability-calculator/">Nerva mining calculator</a>.</p>
+                                <p>Use the <a href="https://www.cryptunit.com/coin/XNV" target="_blank" rel="nofollow noopener">mining calculator from CryptUnit</a> or our own <a href="<?php echo esc_url( home_url( '/nerva-mining-profitability-calculator/' ) ); ?>">Nerva mining calculator</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -939,7 +939,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"> <a class="collapsed" data-target="#collapseFiveLeftEight" data-toggle="collapse" href="#close" aria-expanded="false"> My question is not covered here — what should I do? </a> </h3>
+                        <h3 class="panel-title"> <a class="collapsed" data-target="#collapseFiveLeftEight" data-toggle="collapse" href="#close" aria-expanded="false"> My question is not covered here. What should I do? </a> </h3>
                     </div>
                     <div id="collapseFiveLeftEight" class="panel-collapse collapse" aria-expanded="false" role="tablist">
                         <div class="panel-body">
