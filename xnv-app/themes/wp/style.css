@@ -1796,6 +1796,8 @@ html.nv-anim .reveal:not(.revealed) {
     font-weight: 600;
     padding: .25rem .6rem;
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
     margin-left: .6rem;
     vertical-align: middle;
     transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
