@@ -101,7 +101,7 @@
 			<strong>Hard Fork 14 incoming!</strong>
 			Activates at block <strong>4,480,000</strong> &mdash;
 			<span id="hf14-remaining">calculating...</span> remaining &mdash;
-			upgrade to <a href="https://github.com/nerva-project/nerva/releases/tag/v0.4.0.0" style="color:#fff; text-decoration:underline;" target="_blank" rel="noopener">v0.4.0.0 &rarr;</a>
+			upgrade to <a href="<?php echo esc_url( home_url( '/#downloads' ) ); ?>" style="color:#fff; text-decoration:underline;">v0.4.0.0 &rarr;</a>
 			<button id="hf14-close" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:#fff; font-size:22px; line-height:1; cursor:pointer;" aria-label="Dismiss">&times;</button>
 		</div>
 		<script>

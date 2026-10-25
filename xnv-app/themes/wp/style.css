@@ -1660,7 +1660,8 @@ html.nv-anim .reveal:not(.revealed) {
 .timeline-content p { color: var(--clr-text-muted); font-size: .93rem; margin: .3rem 0 0; max-width: 62ch; }
 
 /* Period separators (years) */
-.timeline-item.period { padding-left: 0; }
+/* Keep period headings in the content column, clear of the line */
+.timeline-item.period { padding-left: 34px; }
 .timeline-item.period::before { display: none; }
 
 .timeline-item.period .timeline-marker { display: none; }
