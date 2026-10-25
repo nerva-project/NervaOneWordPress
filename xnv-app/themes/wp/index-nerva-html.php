@@ -311,8 +311,8 @@
                         <div class="timeline-marker"></div>
                         <div class="timeline-info">Q4 / 2026</div>
                         <div class="timeline-content">
-                            <h4 class="timeline-title">Hard Fork 14 <span class="timeline-badge badge-active">In Development</span></h4>
-                            <p>Nerva's next planned network upgrade, currently in active development. Three key improvements: stronger transaction privacy through a larger anonymity set; smaller and faster-to-verify transactions via more efficient cryptographic signatures and proofs; and a new mining algorithm that further deepens the memory-bound approach introduced in HF13, keeping mining fair and ASIC/GPU resistant, upholding Nerva's one CPU, one vote principle.</p>
+                            <h4 class="timeline-title">Hard Fork 14 <span class="timeline-badge badge-active">Activates 10 Nov 2026</span></h4>
+                            <p>Released as <a href="https://github.com/nerva-project/nerva/releases/tag/v0.4.0.0" target="_blank" rel="noopener">v0.4.0.0 "Legacy Restored"</a>. The fork activates at block 4,480,000 (around 10 November 2026), and every node, miner and service must upgrade before then. Three key improvements: stronger transaction privacy with ring size 16 (up from 5); smaller and faster-to-verify transactions via CLSAG signatures and Bulletproofs+ range proofs; and CryptoNight-Adaptive v8, a new mining algorithm that deepens the memory-bound approach introduced in HF13, keeping mining fair and ASIC/GPU resistant, upholding Nerva's one CPU, one vote principle. Sync is also about 4x faster over the HF14 range.</p>
                         </div>
                     </li>
 
