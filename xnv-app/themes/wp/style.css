@@ -979,6 +979,12 @@ body.admin-bar header#masthead { top: 46px; }
 
 .nv-net-core img { width: 100%; height: auto; display: block; }
 
+/* Desktop: let the network outgrow its column, as on the banner */
+@media (min-width: 992px) {
+    .nv-hero-visual { overflow: visible; }
+    .nv-hero-visual .nv-net { width: clamp(560px, 56vw, 720px); max-width: none; flex: none; margin: -100px 0; }
+}
+
 @keyframes nv-float {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-12px); }
